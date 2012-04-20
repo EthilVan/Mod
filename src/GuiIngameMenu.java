@@ -1,6 +1,11 @@
 package net.minecraft.src;
 
+import java.awt.Desktop;
+import java.awt.Menu;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.minecraft.client.Minecraft;
 
 public class GuiIngameMenu extends GuiScreen
@@ -31,12 +36,12 @@ public class GuiIngameMenu extends GuiScreen
         {
             ((GuiButton)controlList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
         }
-
         controlList.add(new GuiButton(4, width / 2 - 100, height / 4 + 24 + byte0, StatCollector.translateToLocal("menu.returnToGame")));
         controlList.add(new GuiButton(0, width / 2 - 100, height / 4 + 96 + byte0, StatCollector.translateToLocal("menu.options")));
         controlList.add(new GuiButton(5, width / 2 - 100, height / 4 + 48 + byte0, 98, 20, StatCollector.translateToLocal("gui.achievements")));
         controlList.add(new GuiButton(6, width / 2 + 2, height / 4 + 48 + byte0, 98, 20, StatCollector.translateToLocal("gui.stats")));
-    }
+        controlList.add(new GuiButton(7, width / 2 + 2, height / 4 + 72 + byte0, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
+        controlList.add(new GuiButton(8, width / 2 - 100, height / 4 + 72 + byte0, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));    }
 
     /**
      * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
@@ -78,6 +83,40 @@ public class GuiIngameMenu extends GuiScreen
             case 6:
                 mc.displayGuiScreen(new GuiStats(this, mc.statFileWriter));
                 break;
+        }
+        
+        if (par1GuiButton.id == 8)
+        {
+        	Desktop desktop = null;
+            java.net.URI url;
+            try {
+                    url = new java.net.URI("http://ethilvan.fr/");
+                    if (Desktop.isDesktopSupported())
+                    {
+                        desktop = Desktop.getDesktop();
+                        desktop.browse(url);
+                    }
+                }
+            catch (Exception ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (par1GuiButton.id == 7)
+        {
+        	Desktop desktop = null;
+            java.net.URI url;
+            try {
+                    url = new java.net.URI("http://map.ethilvan.fr/");
+                    if (Desktop.isDesktopSupported())
+                    {
+                        desktop = Desktop.getDesktop();
+                        desktop.browse(url);
+                    }
+                }
+            catch (Exception ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

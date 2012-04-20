@@ -121,24 +121,26 @@ public class GuiMainMenu extends GuiScreen
         {
             splashText = "Happy new year!";
         }
-
         StringTranslate stringtranslate = StringTranslate.getInstance();
         int i = height / 4 + 48;
-        controlList.add(new GuiButton(1, width / 2 - 100, i, stringtranslate.translateKey("menu.singleplayer")));
-        controlList.add(multiplayerButton = new GuiButton(2, width / 2 - 100, i + 24, stringtranslate.translateKey("menu.multiplayer")));
-        controlList.add(new GuiButton(3, width / 2 - 100, i + 48, stringtranslate.translateKey("menu.mods")));
-
+        controlList.add(new GuiButton(1, width / 2 - 100, i + 38, 98, 20, stringtranslate.translateKey("menu.singleplayer")));
+        controlList.add(multiplayerButton = new GuiButton(2, width / 2 + 2, i + 38, 98, 20, stringtranslate.translateKey("menu.multiplayer")));
+        controlList.add(new GuiButton(3, width / 2 - 100, i + 62, stringtranslate.translateKey("menu.mods")));
+        controlList.add(new GuiButton(7, width / 2 + 2, i - 10, 98, 20,stringtranslate.translateKey("EthilVan.fr")));
+        controlList.add(new GuiButton(8, width / 2 - 100, i - 10, 98, 20,stringtranslate.translateKey("Carte dynamique")));
+        controlList.add(new GuiButton(6, width / 2 - 100, i + 14, stringtranslate.translateKey("Connexion à Ethil Van...")));
+        
         if (mc.hideQuitButton)
         {
-            controlList.add(new GuiButton(0, width / 2 - 100, i + 72, stringtranslate.translateKey("menu.options")));
+            controlList.add(new GuiButton(0, width / 2 - 100, i + 86, stringtranslate.translateKey("menu.options")));
         }
         else
         {
-            controlList.add(new GuiButton(0, width / 2 - 100, i + 72 + 12, 98, 20, stringtranslate.translateKey("menu.options")));
-            controlList.add(new GuiButton(4, width / 2 + 2, i + 72 + 12, 98, 20, stringtranslate.translateKey("menu.quit")));
+            controlList.add(new GuiButton(0, width / 2 - 100, i + 86 + 12, 98, 20, stringtranslate.translateKey("menu.options")));
+            controlList.add(new GuiButton(4, width / 2 + 2, i + 86 + 12, 98, 20, stringtranslate.translateKey("menu.quit")));
         }
 
-        controlList.add(new GuiButtonLanguage(5, width / 2 - 124, i + 72 + 12));
+        controlList.add(new GuiButtonLanguage(5, width / 2 - 124, i + 86 + 12));
 
         if (mc.session == null)
         {
@@ -151,7 +153,7 @@ public class GuiMainMenu extends GuiScreen
      */
     protected void actionPerformed(GuiButton par1GuiButton)
     {
-        if (par1GuiButton.id == 0)
+    	if (par1GuiButton.id == 0)
         {
             mc.displayGuiScreen(new GuiOptions(this, mc.gameSettings));
         }
@@ -179,6 +181,42 @@ public class GuiMainMenu extends GuiScreen
         if (par1GuiButton.id == 4)
         {
             mc.shutdown();
+        }
+        if (par1GuiButton.id == 6)
+        {
+        	mc.displayGuiScreen(new GuiConnecting(mc, "play.ethilvan.fr", 25565));
+        }
+        if (par1GuiButton.id == 7)
+        {
+        	Desktop desktop = null;
+            java.net.URI url;
+            try {
+                    url = new java.net.URI("http://ethilvan.fr/");
+                    if (Desktop.isDesktopSupported())
+                    {
+                        desktop = Desktop.getDesktop();
+                        desktop.browse(url);
+                    }
+                }
+            catch (Exception ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (par1GuiButton.id == 8)
+        {
+        	Desktop desktop = null;
+            java.net.URI url;
+            try {
+                    url = new java.net.URI("http://map.ethilvan.fr/");
+                    if (Desktop.isDesktopSupported())
+                    {
+                        desktop = Desktop.getDesktop();
+                        desktop.browse(url);
+                    }
+                }
+            catch (Exception ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -374,7 +412,7 @@ public class GuiMainMenu extends GuiScreen
         GL11.glScalef(f, f, f);
         drawCenteredString(fontRenderer, splashText, 0, -8, 0xffff00);
         GL11.glPopMatrix();
-        drawString(fontRenderer, "Minecraft 1.2.5", 2, height - 10, 0xffffff);
+        drawString(fontRenderer, "Minecraft 1.2.5 by EthilVan", 2, height - 10, 0xffffff);
         String s = "Copyright Mojang AB. Do not distribute!";
         drawString(fontRenderer, s, width - fontRenderer.getStringWidth(s) - 2, height - 10, 0xffffff);
         super.drawScreen(par1, par2, par3);
