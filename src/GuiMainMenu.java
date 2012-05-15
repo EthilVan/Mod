@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import java.awt.Desktop;
+import java.awt.Menu;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -8,6 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
@@ -126,8 +131,8 @@ public class GuiMainMenu extends GuiScreen
         controlList.add(new GuiButton(1, width / 2 - 100, i + 38, 98, 20, stringtranslate.translateKey("menu.singleplayer")));
         controlList.add(multiplayerButton = new GuiButton(2, width / 2 + 2, i + 38, 98, 20, stringtranslate.translateKey("menu.multiplayer")));
         controlList.add(new GuiButton(3, width / 2 - 100, i + 62, stringtranslate.translateKey("menu.mods")));
-        controlList.add(new GuiButton(7, width / 2 + 2, i - 10, 98, 20,stringtranslate.translateKey("EthilVan.fr")));
-        controlList.add(new GuiButton(8, width / 2 - 100, i - 10, 98, 20,stringtranslate.translateKey("Carte dynamique")));
+        controlList.add(new GuiButton(7, width / 2 - 100, i - 10, 98, 20,stringtranslate.translateKey("EthilVan.fr")));
+        controlList.add(new GuiButton(8, width / 2 + 2 , i - 10, 98, 20,stringtranslate.translateKey("Carte dynamique")));
         controlList.add(new GuiButton(6, width / 2 - 100, i + 14, stringtranslate.translateKey("Connexion à Ethil Van...")));
         
         if (mc.hideQuitButton)
