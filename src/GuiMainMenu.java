@@ -17,8 +17,7 @@ import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
-public class GuiMainMenu extends GuiScreen
-{
+public class GuiMainMenu extends GuiScreen {
     /** The RNG used by the Main Menu Screen. */
     private static final Random rand = new Random();
 

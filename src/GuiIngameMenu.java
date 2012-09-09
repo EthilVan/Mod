@@ -2,121 +2,110 @@ package net.minecraft.src;
 
 import java.awt.Desktop;
 import java.awt.Menu;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import net.minecraft.client.Minecraft;
 
 public class GuiIngameMenu extends GuiScreen
 {
     /** Also counts the number of updates, not certain as to why yet. */
-    private int updateCounter2;
+    private int updateCounter2 = 0;
 
     /** Counts the number of screen updates. */
-    private int updateCounter;
-
-    public GuiIngameMenu()
-    {
-        updateCounter2 = 0;
-        updateCounter = 0;
-    }
+    private int updateCounter = 0;
 
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */
     public void initGui()
     {
-        updateCounter2 = 0;
-        controlList.clear();
-        byte byte0 = -16;
-        controlList.add(new GuiButton(1, width / 2 - 100, height / 4 + 120 + byte0, StatCollector.translateToLocal("menu.returnToMenu")));
+        this.updateCounter2 = 0;
+        this.controlList.clear();
+        byte var1 = -16;
+        this.controlList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + var1, StatCollector.translateToLocal("menu.returnToMenu")));
 
-        if (mc.isMultiplayerWorld())
+        if (!this.mc.isIntegratedServerRunning())
         {
-            ((GuiButton)controlList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
+            ((GuiButton)this.controlList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
         }
-        controlList.add(new GuiButton(4, width / 2 - 100, height / 4 + 24 + byte0, StatCollector.translateToLocal("menu.returnToGame")));
-        controlList.add(new GuiButton(0, width / 2 - 100, height / 4 + 96 + byte0, StatCollector.translateToLocal("menu.options")));
-        controlList.add(new GuiButton(5, width / 2 - 100, height / 4 + 48 + byte0, 98, 20, StatCollector.translateToLocal("gui.achievements")));
-        controlList.add(new GuiButton(6, width / 2 + 2, height / 4 + 48 + byte0, 98, 20, StatCollector.translateToLocal("gui.stats")));
-        controlList.add(new GuiButton(7, width / 2 + 2, height / 4 + 72 + byte0, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
-        controlList.add(new GuiButton(8, width / 2 - 100, height / 4 + 72 + byte0, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));    }
+
+        this.controlList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + var1, StatCollector.translateToLocal("menu.returnToGame")));
+        this.controlList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.options")));
+        GuiButton var3;
+        this.controlList.add(var3 = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.shareToLan")));
+        this.controlList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.achievements")));
+        this.controlList.add(new GuiButton(6, this.width / 2 + 2, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.stats")));
+        if (!mc.isSingleplayer()) {
+        	controlList.add(new GuiButton(10, this.width / 2 + 2,  this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
+            controlList.add(new GuiButton(11, this.width / 2 - 100, this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("EthilVan.fr"))); 
+        }
+        var3.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().func_71344_c();
+    }
 
     /**
      * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
      */
-    protected void actionPerformed(GuiButton par1GuiButton)
-    {
-        switch (par1GuiButton.id)
-        {
+    protected void actionPerformed(GuiButton par1GuiButton) {
+    	Desktop desktop = null;
+        java.net.URI url;
+        switch (par1GuiButton.id) {
+            case 0:
+                this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+                break;
+
+            case 1:
+                par1GuiButton.enabled = false;
+                this.mc.statFileWriter.readStat(StatList.leaveGameStat, 1);
+                this.mc.theWorld.sendQuittingDisconnectingPacket();
+                this.mc.loadWorld((WorldClient)null);
+                this.mc.displayGuiScreen(new GuiMainMenu());
+
             case 2:
             case 3:
             default:
                 break;
 
-            case 0:
-                mc.displayGuiScreen(new GuiOptions(this, mc.gameSettings));
-                break;
-
-            case 1:
-                mc.statFileWriter.readStat(StatList.leaveGameStat, 1);
-
-                if (mc.isMultiplayerWorld())
-                {
-                    mc.theWorld.sendQuittingDisconnectingPacket();
-                }
-
-                mc.changeWorld1(null);
-                mc.displayGuiScreen(new GuiMainMenu());
-                break;
-
             case 4:
-                mc.displayGuiScreen(null);
-                mc.setIngameFocus();
+                this.mc.displayGuiScreen((GuiScreen)null);
+                this.mc.setIngameFocus();
                 break;
 
             case 5:
-                mc.displayGuiScreen(new GuiAchievements(mc.statFileWriter));
+                this.mc.displayGuiScreen(new GuiAchievements(this.mc.statFileWriter));
                 break;
 
             case 6:
-                mc.displayGuiScreen(new GuiStats(this, mc.statFileWriter));
+                this.mc.displayGuiScreen(new GuiStats(this, this.mc.statFileWriter));
                 break;
-        }
-        
-        if (par1GuiButton.id == 8)
-        {
-        	Desktop desktop = null;
-            java.net.URI url;
-            try {
-                    url = new java.net.URI("http://ethilvan.fr/");
-                    if (Desktop.isDesktopSupported())
-                    {
-                        desktop = Desktop.getDesktop();
-                        desktop.browse(url);
+
+            case 7:
+                this.mc.displayGuiScreen(new GuiShareToLan(this));
+                break;
+            case 10:
+                try {
+                        url = new java.net.URI("http://map.ethilvan.fr/");
+                        if (Desktop.isDesktopSupported())
+                        {
+                            desktop = Desktop.getDesktop();
+                            desktop.browse(url);
+                        }
                     }
+                catch (Exception ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            catch (Exception ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        if (par1GuiButton.id == 7)
-        {
-        	Desktop desktop = null;
-            java.net.URI url;
-            try {
-                    url = new java.net.URI("http://map.ethilvan.fr/");
-                    if (Desktop.isDesktopSupported())
-                    {
-                        desktop = Desktop.getDesktop();
-                        desktop.browse(url);
+            	break;
+            case 11:
+                try {
+                        url = new java.net.URI("http://ethilvan.fr/");
+                        if (Desktop.isDesktopSupported())
+                        {
+                            desktop = Desktop.getDesktop();
+                            desktop.browse(url);
+                        }
                     }
+                catch (Exception ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            catch (Exception ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            	break;
         }
     }
 
@@ -126,7 +115,7 @@ public class GuiIngameMenu extends GuiScreen
     public void updateScreen()
     {
         super.updateScreen();
-        updateCounter++;
+        ++this.updateCounter;
     }
 
     /**
@@ -134,18 +123,8 @@ public class GuiIngameMenu extends GuiScreen
      */
     public void drawScreen(int par1, int par2, float par3)
     {
-        drawDefaultBackground();
-        boolean flag = !mc.theWorld.quickSaveWorld(updateCounter2++);
-
-        if (flag || updateCounter < 20)
-        {
-            float f = ((float)(updateCounter % 10) + par3) / 10F;
-            f = MathHelper.sin(f * (float)Math.PI * 2.0F) * 0.2F + 0.8F;
-            int i = (int)(255F * f);
-            drawString(fontRenderer, "Saving level..", 8, height - 16, i << 16 | i << 8 | i);
-        }
-
-        drawCenteredString(fontRenderer, "Game menu", width / 2, 40, 0xffffff);
+        this.drawDefaultBackground();
+        this.drawCenteredString(this.fontRenderer, "Game menu", this.width / 2, 40, 16777215);
         super.drawScreen(par1, par2, par3);
     }
 }
