@@ -34,20 +34,21 @@ public class GuiIngameMenu extends GuiScreen
         this.controlList.add(var3 = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.shareToLan")));
         this.controlList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.achievements")));
         this.controlList.add(new GuiButton(6, this.width / 2 + 2, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.stats")));
-        if (!mc.isSingleplayer()) {
-        	controlList.add(new GuiButton(10, this.width / 2 + 2,  this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
-            controlList.add(new GuiButton(11, this.width / 2 - 100, this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("EthilVan.fr"))); 
+        var3.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic();
+        if (!mc.isSingleplayer())
+        {
+            controlList.add(new GuiButton(10, this.width / 2 + 2,  this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
+            controlList.add(new GuiButton(11, this.width / 2 - 100, this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
         }
-        var3.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().func_71344_c();
     }
 
     /**
      * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
      */
-    protected void actionPerformed(GuiButton par1GuiButton) {
-    	Desktop desktop = null;
-        java.net.URI url;
-        switch (par1GuiButton.id) {
+    protected void actionPerformed(GuiButton par1GuiButton)
+    {
+        switch (par1GuiButton.id)
+        {
             case 0:
                 this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
                 break;
@@ -67,6 +68,7 @@ public class GuiIngameMenu extends GuiScreen
             case 4:
                 this.mc.displayGuiScreen((GuiScreen)null);
                 this.mc.setIngameFocus();
+                this.mc.sndManager.resumeAllSounds();
                 break;
 
             case 5:
@@ -79,33 +81,11 @@ public class GuiIngameMenu extends GuiScreen
 
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
-                break;
             case 10:
-                try {
-                        url = new java.net.URI("http://map.ethilvan.fr/");
-                        if (Desktop.isDesktopSupported())
-                        {
-                            desktop = Desktop.getDesktop();
-                            desktop.browse(url);
-                        }
-                    }
-                catch (Exception ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            	this.openUrl("http://ethilvan.fr");
             	break;
             case 11:
-                try {
-                        url = new java.net.URI("http://ethilvan.fr/");
-                        if (Desktop.isDesktopSupported())
-                        {
-                            desktop = Desktop.getDesktop();
-                            desktop.browse(url);
-                        }
-                    }
-                catch (Exception ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            	break;
+            	this.openUrl("http://map.ethilvan.fr");
         }
     }
 
@@ -116,6 +96,26 @@ public class GuiIngameMenu extends GuiScreen
     {
         super.updateScreen();
         ++this.updateCounter;
+    }
+
+    private void openUrl(String url) {
+    	Desktop desktop = null;
+        java.net.URI uri;
+
+        try
+        {
+            uri = new java.net.URI(url);
+
+            if (Desktop.isDesktopSupported())
+            {
+                desktop = Desktop.getDesktop();
+                desktop.browse(uri);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
