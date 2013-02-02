@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,9 +39,16 @@ public class GuiMainMenu extends GuiScreen
      * Texture allocated for the current viewport of the main menu's panorama background.
      */
     private int viewportTexture;
+    private String field_92025_p;
 
     /** An array of all the paths to the panorama pictures. */
     private static final String[] titlePanoramaPaths = new String[] {"/title/bg/panorama0.png", "/title/bg/panorama1.png", "/title/bg/panorama2.png", "/title/bg/panorama3.png", "/title/bg/panorama4.png", "/title/bg/panorama5.png"};
+    private int field_92024_r;
+    private int field_92023_s;
+    private int field_92022_t;
+    private int field_92021_u;
+    private int field_92020_v;
+    private int field_92019_w;
 
     public GuiMainMenu()
     {
@@ -153,7 +161,6 @@ public class GuiMainMenu extends GuiScreen
             this.addSingleplayerMultiplayerButtons(var4, 24, var2);
         }
 
-        this.controlList.add(new GuiButton(3, width / 2 - 100, var4 + 62, var2.translateKey("menu.mods")));
 
         if (this.mc.hideQuitButton)
         {
@@ -161,12 +168,34 @@ public class GuiMainMenu extends GuiScreen
         }
         else
         {
-            this.controlList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options")));
-            this.controlList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
+            this.controlList.add(new GuiButton(0, width / 2 - 100, var4 + 72 - 10, var2.translateKey("menu.options")));
+            this.controlList.add(new GuiButton(4, width / 2 + 2, var4 + 86, 98, 20, var2.translateKey("menu.quit")));
         }
 
-        this.controlList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));
-        this.addEthilvanButtons(var4, 24, var2);
+        this.controlList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 - 10));
+		controlList.add(new GuiButton(7, width / 2 - 100, var4 - 10, 98, 20, var2.translateKey("EthilVan.fr")));
+		controlList.add(new GuiButton(8, width / 2 + 2 , var4 - 10, 98, 20, var2.translateKey("Carte dynamique")));
+		controlList.add(new GuiButton(6, width / 2 - 100, var4 + 14, var2.translateKey("Connexion à Ethil Van...")));
+        this.field_92025_p = "";
+        String var5 = System.getProperty("os_architecture");
+        String var6 = System.getProperty("java_version");
+
+        if ("ppc".equalsIgnoreCase(var5))
+        {
+            this.field_92025_p = "\u00a7lNotice!\u00a7r PowerPC compatibility will be dropped in Minecraft 1.6";
+        }
+        else if (var6 != null && var6.startsWith("1.5"))
+        {
+            this.field_92025_p = "\u00a7lNotice!\u00a7r Java 1.5 compatibility will be dropped in Minecraft 1.6";
+        }
+
+        this.field_92023_s = this.fontRenderer.getStringWidth(this.field_92025_p);
+        this.field_92024_r = this.fontRenderer.getStringWidth("Please click \u00a7nhere\u00a7r for more information.");
+        int var7 = Math.max(this.field_92023_s, this.field_92024_r);
+        this.field_92022_t = (this.width - var7) / 2;
+        this.field_92021_u = ((GuiButton)this.controlList.get(0)).yPosition - 24;
+        this.field_92020_v = this.field_92022_t + var7;
+        this.field_92019_w = this.field_92021_u + 24;
     }
 
     /**
@@ -194,13 +223,24 @@ public class GuiMainMenu extends GuiScreen
         }
     }
 
-    /**
-     * Adds Ethilvan buttons on Main Menu for Ethilvan's players.
-     */
-    private void addEthilvanButtons(int par1, int par2, StringTranslate par3StringTranslate) {
-        controlList.add(new GuiButton(7, width / 2 - 100, par1 - 10, 98, 20, par3StringTranslate.translateKey("EthilVan.fr")));
-        controlList.add(new GuiButton(8, width / 2 + 2 , par1 - 10, 98, 20, par3StringTranslate.translateKey("Carte dynamique")));
-        controlList.add(new GuiButton(6, width / 2 - 100, par1 + 14, par3StringTranslate.translateKey("Connexion à Ethil Van...")));
+    private void openUrl(String url) {
+    	Desktop desktop = null;
+        java.net.URI uri;
+
+        try
+        {
+            uri = new java.net.URI(url);
+
+            if (Desktop.isDesktopSupported())
+            {
+                desktop = Desktop.getDesktop();
+                desktop.browse(uri);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -271,33 +311,31 @@ public class GuiMainMenu extends GuiScreen
         }
     }
 
-    private void openUrl(String url) {
-    	Desktop desktop = null;
-        java.net.URI uri;
-
-        try
-        {
-            uri = new java.net.URI(url);
-
-            if (Desktop.isDesktopSupported())
-            {
-                desktop = Desktop.getDesktop();
-                desktop.browse(uri);
-            }
-        }
-        catch (Exception ex)
-        {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void confirmClicked(boolean par1, int par2)
     {
         if (par1 && par2 == 12)
         {
-            ISaveFormat var3 = this.mc.getSaveLoader();
-            var3.flushCache();
-            var3.deleteWorldDirectory("Demo_World");
+            ISaveFormat var6 = this.mc.getSaveLoader();
+            var6.flushCache();
+            var6.deleteWorldDirectory("Demo_World");
+            this.mc.displayGuiScreen(this);
+        }
+        else if (par2 == 13)
+        {
+            if (par1)
+            {
+                try
+                {
+                    Class var3 = Class.forName("java.awt.Desktop");
+                    Object var4 = var3.getMethod("getDesktop", new Class[0]).invoke((Object)null, new Object[0]);
+                    var3.getMethod("browse", new Class[] {URI.class}).invoke(var4, new Object[] {new URI("http://tinyurl.com/javappc")});
+                }
+                catch (Throwable var5)
+                {
+                    var5.printStackTrace();
+                }
+            }
+
             this.mc.displayGuiScreen(this);
         }
     }
@@ -494,7 +532,7 @@ public class GuiMainMenu extends GuiScreen
         GL11.glScalef(var8, var8, var8);
         this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
         GL11.glPopMatrix();
-        String var9 = "Minecraft 1.4.5 for EthilVan";
+        String var9 = "Minecraft 1.4.7 for EthilVan";
 
         if (this.mc.isDemo())
         {
@@ -504,6 +542,29 @@ public class GuiMainMenu extends GuiScreen
         this.drawString(this.fontRenderer, var9, 2, this.height - 10, 16777215);
         String var10 = "Copyright Mojang AB. Do not distribute!";
         this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
+
+        if (this.field_92025_p != null && this.field_92025_p.length() > 0)
+        {
+            drawRect(this.field_92022_t - 2, this.field_92021_u - 2, this.field_92020_v + 2, this.field_92019_w - 1, 1428160512);
+            this.drawString(this.fontRenderer, this.field_92025_p, this.field_92022_t, this.field_92021_u, 16777215);
+            this.drawString(this.fontRenderer, "Please click \u00a7nhere\u00a7r for more information.", (this.width - this.field_92024_r) / 2, ((GuiButton)this.controlList.get(0)).yPosition - 12, 16777215);
+        }
+
         super.drawScreen(par1, par2, par3);
+    }
+
+    /**
+     * Called when the mouse is clicked.
+     */
+    protected void mouseClicked(int par1, int par2, int par3)
+    {
+        super.mouseClicked(par1, par2, par3);
+
+        if (this.field_92025_p.length() > 0 && par1 >= this.field_92022_t && par1 <= this.field_92020_v && par2 >= this.field_92021_u && par2 <= this.field_92019_w)
+        {
+            GuiConfirmOpenLink var4 = new GuiConfirmOpenLink(this, "http://tinyurl.com/javappc", 13);
+            var4.func_92026_h();
+            this.mc.displayGuiScreen(var4);
+        }
     }
 }

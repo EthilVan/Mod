@@ -57,8 +57,7 @@ public class BlockTorch extends Block
         else
         {
             int var5 = par1World.getBlockId(par2, par3, par4);
-            return var5 == Block.fence.blockID || var5 == Block.netherFence.blockID || var5 == Block.glass.blockID 
-            		|| var5 == Block.cobblestoneWall.blockID || var5 == mod_Ethilvan.coloredGlass.blockID;
+            return var5 == Block.fence.blockID || var5 == Block.netherFence.blockID || var5 == Block.glass.blockID || var5 == Block.cobblestoneWall.blockID || var5 == mod_Ethilvan.coloredGlass.blockID;
         }
     }
 
@@ -70,7 +69,10 @@ public class BlockTorch extends Block
         return par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) ? true : (par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) ? true : (par1World.isBlockNormalCubeDefault(par2, par3, par4 - 1, true) ? true : (par1World.isBlockNormalCubeDefault(par2, par3, par4 + 1, true) ? true : this.canPlaceTorchOn(par1World, par2, par3 - 1, par4))));
     }
 
-    public int func_85104_a(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
+    /**
+     * Called when a block is placed using its ItemBlock. Args: World, X, Y, Z, side, hitX, hitY, hitZ, block metadata
+     */
+    public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
     {
         int var10 = par9;
 

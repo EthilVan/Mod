@@ -35,11 +35,6 @@ public class GuiIngameMenu extends GuiScreen
         this.controlList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.achievements")));
         this.controlList.add(new GuiButton(6, this.width / 2 + 2, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.stats")));
         var3.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic();
-        if (!mc.isSingleplayer())
-        {
-            controlList.add(new GuiButton(10, this.width / 2 + 2,  this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
-            controlList.add(new GuiButton(11, this.width / 2 - 100, this.height / 4 + 72 + var1, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
-        }
     }
 
     /**
@@ -81,11 +76,10 @@ public class GuiIngameMenu extends GuiScreen
 
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
-            case 10:
-            	this.openUrl("http://ethilvan.fr");
-            	break;
-            case 11:
-            	this.openUrl("http://map.ethilvan.fr");
+			case 10:
+				this.openUrl("http://ethilvan.fr");
+			case 11:
+				this.openUrl("http://mapethilvan.fr");
         }
     }
 
@@ -98,7 +92,7 @@ public class GuiIngameMenu extends GuiScreen
         ++this.updateCounter;
     }
 
-    private void openUrl(String url) {
+	private void openUrl(String url) {
     	Desktop desktop = null;
         java.net.URI uri;
 

@@ -30,11 +30,6 @@ public class mod_Ethilvan extends BaseMod {
     public static final Block carpet = (new BlockCarpet(232, 0, Material.cloth).setHardness(0.5F)
             .setStepSound(Block.soundClothFootstep).setBlockName("carpet").setLightOpacity(0).setRequiresSelfNotify());
 
-    public static final Item goldCoin = new Item(20000).setItemName("goldCoin").setCreativeTab(CreativeTabs.tabMisc)
-    		.setIconIndex(ModLoader.addOverride("/gui/items.png", "/ethilvan/item/po.png"));
-    public static final Item copperCoin = new Item(20001).setItemName("copperCoin").setCreativeTab(CreativeTabs.tabMisc)
-    		.setIconIndex(ModLoader.addOverride("/gui/items.png", "/ethilvan/item/pc.png"));
-
     @Override
     public void load() {
         /** Bloc **/
@@ -100,10 +95,37 @@ public class mod_Ethilvan extends BaseMod {
 
         ColoredGlassCraft craft = new ColoredGlassCraft();
 
-        ////////////////////////////////////////////////
+        ModLoader.addRecipe(new ItemStack(Block.stoneBrick, 8, 3), new Object[] {
+            "XXX", "X X", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 0)
+        });
 
-        ModLoader.addName(goldCoin, "Pièce d'or");
-        ModLoader.addName(copperCoin, "Pièce de cuivre");
+        ModLoader.addRecipe(new ItemStack(Block.stoneBrick, 8, 2), new Object[] {
+            "XXX", "XYX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 0), Character.valueOf('Y'), Item.gunpowder
+        });
+
+        ModLoader.addRecipe(new ItemStack(Block.stoneBrick, 8, 1), new Object[] {
+            "XXX", "XYX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 0), Character.valueOf('Y'), Block.vine
+        });
+
+        ModLoader.addRecipe(new ItemStack(Block.cobblestoneMossy, 8), new Object[] {
+            "XXX", "XYX", "XXX", Character.valueOf('X'), Block.cobblestone, Character.valueOf('Y'), Block.vine
+        });
+
+        ModLoader.addRecipe(new ItemStack(Block.sponge, 1), new Object[] {
+            "XYX", "YCY", "XYX", Character.valueOf('X'), new ItemStack(Block.cloth, 0 , 4), Character.valueOf('Y'), Block.deadBush, Character.valueOf('C'), Item.enderPearl
+        });
+
+        ModLoader.addRecipe(new ItemStack(Block.web, 1), new Object[] {
+        	"XXX", "XXX", "XXX", Character.valueOf('X'), Item.silk
+        });
+
+        ModLoader.addRecipe(new ItemStack(Block.snow, 1), new Object[] {
+        	"XXX", Character.valueOf('X'), Item.snowball
+        });
+
+        ModLoader.addRecipe(new ItemStack(Block.ice, 1), new Object[] {
+        	"XX", "XX", Character.valueOf('X'), Block.blockSnow
+        });
     }
 
     @Override
