@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
 public class mod_Ethilvan extends BaseMod {
+
     /** Colored Glass Block**/
     public static final Block coloredGlass = (new BlockColoredGlass(231, 0, Material.glass, false).setHardness(0.3F)
             .setStepSound(Block.soundGlassFootstep).setBlockName("coloredGlass").setRequiresSelfNotify());
@@ -24,7 +25,7 @@ public class mod_Ethilvan extends BaseMod {
 
     /** Redstone Block**/
     public static final Block redstoneBlock = (new Block(230, Material.iron).setHardness(5.0F).setResistance(10.0F)
-            .setStepSound(Block.soundMetalFootstep).setBlockName("redstoneBlock"));
+            .setStepSound(Block.soundMetalFootstep).setBlockName("redstoneBlock").setRequiresSelfNotify());
 
     /** Tapis Block **/
     public static final Block carpet = (new BlockCarpet(232, 0, Material.cloth).setHardness(0.5F)
