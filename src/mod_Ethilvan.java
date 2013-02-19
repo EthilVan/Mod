@@ -31,15 +31,19 @@ public class mod_Ethilvan extends BaseMod {
     public static final Block carpet = (new BlockCarpet(232, 0, Material.cloth).setHardness(0.5F)
             .setStepSound(Block.soundClothFootstep).setBlockName("carpet").setLightOpacity(0).setRequiresSelfNotify());
 
+    public static final Block sandStoneWall = new BlockWallSandStone(233, Block.sandStone).setHardness(0.8F).setRequiresSelfNotify().setBlockName("sandstoneWall").setStepSound(Block.soundStoneFootstep);
+
     @Override
     public void load() {
         /** Bloc **/
         ModLoader.registerBlock(carpet);
         ModLoader.registerBlock(redstoneBlock);
         ModLoader.registerBlock(coloredGlass);
+        ModLoader.registerBlock(sandStoneWall);
         /** Bloc avec Meta-Data **/
         Item.itemsList[coloredGlass.blockID] = new ItemColoredGlass(coloredGlass.blockID - 256, coloredGlass);
         Item.itemsList[carpet.blockID] = new ItemCarpet(carpet.blockID - 256, carpet);
+        Item.itemsList[sandStoneWall.blockID] = new ItemMultiTextureTile(sandStoneWall.blockID - 256, sandStoneWall, new String[] {"1", "2"});
         redstoneBlock.blockIndexInTexture = ModLoader.addOverride("/terrain.png", "/ethilvan/block/redstoneBlock.png");
         redstoneBlock.setCreativeTab(CreativeTabs.tabBlock);
         ModLoader.addName(redstoneBlock, "Bloc de Redstone");
@@ -77,7 +81,15 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addName(new ItemStack(carpet, 1, 13), "Tapis vert");
         ModLoader.addName(new ItemStack(carpet, 1, 14), "Tapis rouge");
         ModLoader.addName(new ItemStack(carpet, 1, 15), "Tapis noir");
-
+        /** Nom des murs de sandstone **/
+        ModLoader.addName(new ItemStack(sandStoneWall, 1, 0), "Muret de grès");
+        ModLoader.addName(new ItemStack(sandStoneWall, 1, 1), "Muret de grès lisse");
+        ModLoader.addRecipe(new ItemStack(sandStoneWall, 6, 0), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.sandStone, 0, 0)
+        });
+        ModLoader.addRecipe(new ItemStack(sandStoneWall, 6, 1), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.sandStone, 0, 2)
+        });
         ///////////////////////////////////////////////
         for (int i = 0; i < 16; i++) {
             ModLoader.addRecipe(new ItemStack(mod_Ethilvan.carpet, 8, i), new Object[] {
@@ -88,7 +100,6 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addRecipe(new ItemStack(mod_Ethilvan.redstoneBlock, 1), new Object[] {
             "XXX", "XXX", "XXX", Character.valueOf('X'), Item.redstone
         });
-
 
         ModLoader.addRecipe(new ItemStack(Item.redstone, 9), new Object[] {
             "X", Character.valueOf('X'), redstoneBlock
