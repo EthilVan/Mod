@@ -166,6 +166,11 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addRecipe(new ItemStack(Block.ice, 1), new Object[] {
         	"XX", "XX", Character.valueOf('X'), Block.blockSnow
         });
+		for (int i = 0; i < 16; i++) {
+			for (int a = 0; a < 16; a++) {
+				ModLoader.addShapelessRecipe(new ItemStack(mod_Ethilvan.carpet, 1, a), new Object[] {new ItemStack(mod_Ethilvan.carpet, 1, i), new ItemStack(Item.dyePowder, 1, BlockCloth.getDyeFromBlock(a))});
+			}
+		}
     }
 
     @Override
