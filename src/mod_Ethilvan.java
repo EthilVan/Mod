@@ -96,10 +96,10 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addRecipe(new ItemStack(sandStoneWall, 6, 1), new Object[] {
             "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.sandStone, 0, 2)
         });
-        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 0), "Muret de brique de pierre");
-        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 1), "Muret de brique de pierre moussue");
-        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 2), "Muret de brique de pierre craquelé");
-        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 3), "Muret de brique de pierre cerclé");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 0), "Muret de briques de pierre");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 1), "Muret de briques de pierre moussues");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 2), "Muret de briques de pierre craquelées");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 3), "Muret de briques de pierre sculptées");
         ModLoader.addRecipe(new ItemStack(stoneBrickWall, 6, 0), new Object[] {
             "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 0)
         });
@@ -112,11 +112,11 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addRecipe(new ItemStack(stoneBrickWall, 6, 3), new Object[] {
             "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 3)
         });
-        ModLoader.addName(brickWall, "Muret de brique");
+        ModLoader.addName(brickWall, "Muret de briques");
         ModLoader.addRecipe(new ItemStack(brickWall, 6), new Object[] {
             "XXX", "XXX", Character.valueOf('X'), Block.brick
         });
-        ModLoader.addName(netherBrickWall, "Muret de brique des Tréfonds");
+        ModLoader.addName(netherBrickWall, "Muret de briques des Tréfonds");
         ModLoader.addShapelessRecipe(new ItemStack(netherBrickWall, 1), new Object[] {new ItemStack(Block.netherFence, 1)});
         ModLoader.addShapelessRecipe(new ItemStack(Block.netherFence, 1), new Object[] {new ItemStack(netherBrickWall, 1)});
         ///////////////////////////////////////////////
