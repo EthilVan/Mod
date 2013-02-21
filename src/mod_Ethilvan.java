@@ -32,7 +32,9 @@ public class mod_Ethilvan extends BaseMod {
             .setStepSound(Block.soundClothFootstep).setBlockName("carpet").setLightOpacity(0).setRequiresSelfNotify());
 
     public static final Block sandStoneWall = new BlockWallSandStone(233, Block.sandStone).setHardness(0.8F).setRequiresSelfNotify().setBlockName("sandstoneWall").setStepSound(Block.soundStoneFootstep);
-
+    public static final Block stoneBrickWall = new BlockWallStoneBrick(234, Block.stoneBrick).setRequiresSelfNotify().setBlockName("stonebrickWall").setStepSound(Block.soundStoneFootstep);
+    public static final Block brickWall = new BlockWallBrick(235, Block.brick).setRequiresSelfNotify().setBlockName("brickWall").setStepSound(Block.soundStoneFootstep);
+    public static final Block netherBrickWall = new BlockWallNetherBrick(236, Block.netherBrick).setRequiresSelfNotify().setBlockName("netherbrickWall").setStepSound(Block.soundStoneFootstep);;
     @Override
     public void load() {
         /** Bloc **/
@@ -40,10 +42,14 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.registerBlock(redstoneBlock);
         ModLoader.registerBlock(coloredGlass);
         ModLoader.registerBlock(sandStoneWall);
+        ModLoader.registerBlock(stoneBrickWall);
+        ModLoader.registerBlock(brickWall);
+        ModLoader.registerBlock(netherBrickWall);
         /** Bloc avec Meta-Data **/
         Item.itemsList[coloredGlass.blockID] = new ItemColoredGlass(coloredGlass.blockID - 256, coloredGlass);
         Item.itemsList[carpet.blockID] = new ItemCarpet(carpet.blockID - 256, carpet);
-        Item.itemsList[sandStoneWall.blockID] = new ItemMultiTextureTile(sandStoneWall.blockID - 256, sandStoneWall, new String[] {"1", "2"});
+        Item.itemsList[sandStoneWall.blockID] = new ItemMultiTextureTile(sandStoneWall.blockID - 256, sandStoneWall, BlockWallSandStone.types);
+        Item.itemsList[stoneBrickWall.blockID] = new ItemMultiTextureTile(stoneBrickWall.blockID - 256, stoneBrickWall, BlockWallStoneBrick.types);
         redstoneBlock.blockIndexInTexture = ModLoader.addOverride("/terrain.png", "/ethilvan/block/redstoneBlock.png");
         redstoneBlock.setCreativeTab(CreativeTabs.tabBlock);
         ModLoader.addName(redstoneBlock, "Bloc de Redstone");
@@ -81,7 +87,7 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addName(new ItemStack(carpet, 1, 13), "Tapis vert");
         ModLoader.addName(new ItemStack(carpet, 1, 14), "Tapis rouge");
         ModLoader.addName(new ItemStack(carpet, 1, 15), "Tapis noir");
-        /** Nom des murs de sandstone **/
+        /** Nom des murets **/
         ModLoader.addName(new ItemStack(sandStoneWall, 1, 0), "Muret de grès");
         ModLoader.addName(new ItemStack(sandStoneWall, 1, 1), "Muret de grès lisse");
         ModLoader.addRecipe(new ItemStack(sandStoneWall, 6, 0), new Object[] {
@@ -90,13 +96,35 @@ public class mod_Ethilvan extends BaseMod {
         ModLoader.addRecipe(new ItemStack(sandStoneWall, 6, 1), new Object[] {
             "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.sandStone, 0, 2)
         });
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 0), "Muret de brique de pierre");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 1), "Muret de brique de pierre moussue");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 2), "Muret de brique de pierre craquelé");
+        ModLoader.addName(new ItemStack(stoneBrickWall, 1, 3), "Muret de brique de pierre cerclé");
+        ModLoader.addRecipe(new ItemStack(stoneBrickWall, 6, 0), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 0)
+        });
+        ModLoader.addRecipe(new ItemStack(stoneBrickWall, 6, 1), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 1)
+        });
+        ModLoader.addRecipe(new ItemStack(stoneBrickWall, 6, 2), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 2)
+        });
+        ModLoader.addRecipe(new ItemStack(stoneBrickWall, 6, 3), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), new ItemStack(Block.stoneBrick, 0, 3)
+        });
+        ModLoader.addName(brickWall, "Muret de brique");
+        ModLoader.addRecipe(new ItemStack(brickWall, 6), new Object[] {
+            "XXX", "XXX", Character.valueOf('X'), Block.brick
+        });
+        ModLoader.addName(netherBrickWall, "Muret de brique des Tréfonds");
+        ModLoader.addShapelessRecipe(new ItemStack(netherBrickWall, 1), new Object[] {new ItemStack(Block.netherFence, 1)});
+        ModLoader.addShapelessRecipe(new ItemStack(Block.netherFence, 1), new Object[] {new ItemStack(netherBrickWall, 1)});
         ///////////////////////////////////////////////
         for (int i = 0; i < 16; i++) {
             ModLoader.addRecipe(new ItemStack(mod_Ethilvan.carpet, 8, i), new Object[] {
                         "XX", Character.valueOf('X'), new ItemStack(Block.cloth, 0, i)
                     });
         }
-
         ModLoader.addRecipe(new ItemStack(mod_Ethilvan.redstoneBlock, 1), new Object[] {
             "XXX", "XXX", "XXX", Character.valueOf('X'), Item.redstone
         });
