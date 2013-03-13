@@ -1,5 +1,10 @@
 package net.minecraft.src;
 
+import java.io.File;
+import java.util.Properties;
+
+import net.minecraft.client.Minecraft;
+
 public class mod_Ethilvan extends BaseMod {
 
     /** Colored Glass Block**/
@@ -34,7 +39,8 @@ public class mod_Ethilvan extends BaseMod {
     public static final Block sandStoneWall = new BlockWallSandStone(233, Block.sandStone).setHardness(0.8F).setRequiresSelfNotify().setBlockName("sandstoneWall").setStepSound(Block.soundStoneFootstep);
     public static final Block stoneBrickWall = new BlockWallStoneBrick(234, Block.stoneBrick).setRequiresSelfNotify().setBlockName("stonebrickWall").setStepSound(Block.soundStoneFootstep);
     public static final Block brickWall = new BlockWallBrick(235, Block.brick).setRequiresSelfNotify().setBlockName("brickWall").setStepSound(Block.soundStoneFootstep);
-    public static final Block netherBrickWall = new BlockWallNetherBrick(236, Block.netherBrick).setRequiresSelfNotify().setBlockName("netherbrickWall").setStepSound(Block.soundStoneFootstep);;
+    public static final Block netherBrickWall = new BlockWallNetherBrick(236, Block.netherBrick).setRequiresSelfNotify().setBlockName("netherbrickWall").setStepSound(Block.soundStoneFootstep);
+
     @Override
     public void load() {
         /** Bloc **/
@@ -171,6 +177,38 @@ public class mod_Ethilvan extends BaseMod {
 				ModLoader.addShapelessRecipe(new ItemStack(mod_Ethilvan.carpet, 1, a), new Object[] {new ItemStack(mod_Ethilvan.carpet, 1, i), new ItemStack(Item.dyePowder, 1, BlockCloth.getDyeFromBlock(a))});
 			}
 		}
+        ModLoader.addName(Block.stairsWoolWhite, "Escalier de laine blanc");
+        ModLoader.addName(Block.stairsWoolOrange, "Escalier de laine orange");
+        ModLoader.addName(Block.stairsWoolMagenta, "Escalier de laine magenta");
+        ModLoader.addName(Block.stairsWoolLightBlue, "Escalier de laine bleu clair");
+        ModLoader.addName(Block.stairsWoolYellow, "Escalier de laine jaune");
+        ModLoader.addName(Block.stairsWoolLime, "Escalier de laine vert clair");
+        ModLoader.addName(Block.stairsWoolPink, "Escalier de laine rose");
+        ModLoader.addName(Block.stairsWoolGray, "Escalier de laine gris");
+        ModLoader.addName(Block.stairsWoolLightGray, "Escalier de laine gris clair");
+        ModLoader.addName(Block.stairsWoolCyan, "Escalier de laine cyan");
+        ModLoader.addName(Block.stairsWoolPurple, "Escalier de laine violet");
+        ModLoader.addName(Block.stairsWoolBlue, "Escalier de laine bleu");
+        ModLoader.addName(Block.stairsWoolBrown, "Escalier de laine marron");
+        ModLoader.addName(Block.stairsWoolGreen, "Escalier de laine vert");
+        ModLoader.addName(Block.stairsWoolRed, "Escalier de laine rouge");
+        ModLoader.addName(Block.stairsWoolBlack, "Escalier de laine noir");
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolWhite, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 0)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolOrange, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 1)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolMagenta, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 2)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolLightBlue, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 3)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolYellow, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 4)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolLime, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 5)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolPink, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 6)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolGray, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 7)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolLightGray, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 8)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolCyan, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 9)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolPurple, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 10)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolBlue, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 11)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolBrown, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 12)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolGreen, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 13)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolRed, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 14)});
+        ModLoader.addRecipe(new ItemStack(Block.stairsWoolBlack, 4), new Object[] {"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, 15)});
     }
 
     @Override
