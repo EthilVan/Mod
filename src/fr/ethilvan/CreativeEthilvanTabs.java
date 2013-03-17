@@ -10,12 +10,12 @@ public class CreativeEthilvanTabs extends CreativeTabs {
 		super("EthilVan");
 	}
 
-    public String getTranslatedTabLabel() {
-        return "EthilVan";
-    }
+	public String getTranslatedTabLabel() {
+		return "EthilVan";
+	}
 
-    public int getTabIconItemIndex() {
-        return EthilVan.redstoneBlock.blockID;
-    }
+	public int getTabIconItemIndex() {
+		return EthilVan.redstoneBlock.blockID;
+	}
 }
 

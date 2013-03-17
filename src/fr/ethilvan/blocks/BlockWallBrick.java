@@ -19,16 +19,16 @@ public class BlockWallBrick extends BlockWall {
 	}
 
 	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-    	return super.getBlockTextureFromSide(par1);
-    }
+		return super.getBlockTextureFromSide(par1);
+	}
 
-    @Override
-    public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
-    	return true;
-    }
+	@Override
+	public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
+		return true;
+	}
 
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-        par3List.add(new ItemStack(par1, 1, 0));
-    }
+		par3List.add(new ItemStack(par1, 1, 0));
+	}
 }

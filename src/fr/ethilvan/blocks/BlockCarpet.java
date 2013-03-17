@@ -30,29 +30,29 @@ public class BlockCarpet extends Block {
 		this.setStepSound(Block.soundClothFootstep);
 		this.setBlockName("carpet");
 		this.setLightOpacity(0);
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-        this.setTickRandomly(true);
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+		this.setTickRandomly(true);
 		this.setCreativeTab(EthilVan.ethilvanTabs);
 		this.setRequiresSelfNotify();
 	}
 
-    @Override
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
-    @Override
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
-        float f = 0.125F;
-        return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)par2 + this.minX, (double)par3 + this.minY, (double)par4 + this.minZ, (double)par2 + this.maxX, (double)((float)par3 + (float)f), (double)par4 + this.maxZ);
+		float f = 0.125F;
+		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)par2 + this.minX, (double)par3 + this.minY, (double)par4 + this.minZ, (double)par2 + this.maxX, (double)((float)par3 + (float)f), (double)par4 + this.maxZ);
 	}
 
-    @Override
+	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
 
-    @Override
+	@Override
 	public int getBlockTextureFromSideAndMetadata(int side, int metadata) {
 		switch (metadata) {
 		case 0:
@@ -108,7 +108,7 @@ public class BlockCarpet extends Block {
 	}
 
 	@SideOnly(Side.CLIENT)
-    @Override
+	@Override
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int var4 = 0; var4 < 16; ++var4) {
 			par3List.add(new ItemStack(par1, 1, var4));
@@ -145,12 +145,12 @@ public class BlockCarpet extends Block {
 	}
 
 	@Override
-    public boolean isFlammable(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face) {
-        return true;
-    }
+	public boolean isFlammable(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face) {
+		return true;
+	}
 
 	@Override
 	public int getFlammability(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face){
-        return 150;
-    }
+		return 150;
+	}
 }
