@@ -26,6 +26,8 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import fr.ethilvan.blocks.BlockCarpet;
+import fr.ethilvan.blocks.BlockCobTimbered;
+import fr.ethilvan.blocks.BlockCobTimbered2;
 import fr.ethilvan.blocks.BlockColoredGlass;
 import fr.ethilvan.blocks.BlockWallBrick;
 import fr.ethilvan.blocks.BlockWallNetherBrick;

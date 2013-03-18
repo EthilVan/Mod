@@ -1,7 +1,8 @@
-package fr.ethilvan;
+package fr.ethilvan.blocks;
 
 import java.util.Random;
 
+import fr.ethilvan.EthilVan;
 import fr.ethilvan.common.CommonProxy;
 
 import net.minecraft.block.Block;

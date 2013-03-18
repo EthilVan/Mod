@@ -1,7 +1,8 @@
-package fr.ethilvan;
+package fr.ethilvan.blocks;
 
 import java.util.Random;
 
+import fr.ethilvan.EthilVan;
 import fr.ethilvan.common.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,6 +14,7 @@ import net.minecraft.world.World;
 public class BlockCobTimbered2 extends Block {
 
 	public static String[] faces = {"0", "1"};
+
 	public BlockCobTimbered2(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setHardness(1.5F);
