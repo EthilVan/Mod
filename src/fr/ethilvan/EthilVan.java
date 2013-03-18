@@ -1,5 +1,7 @@
 package fr.ethilvan;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCloth;
 import net.minecraft.block.material.Material;
@@ -7,10 +9,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMultiTextureTile;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.IShearable;
-import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.client.registry.ClientRegistry;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -27,7 +29,6 @@ import fr.ethilvan.blocks.BlockWallBrick;
 import fr.ethilvan.blocks.BlockWallNetherBrick;
 import fr.ethilvan.blocks.BlockWallSandStone;
 import fr.ethilvan.blocks.BlockWallStoneBrick;
-import fr.ethilvan.client.ClientProxy;
 import fr.ethilvan.common.CommonProxy;
 
 @Mod(modid = "ethilvan", name = "EthilVan", version = "0.0.1")
@@ -79,6 +80,7 @@ public class EthilVan {
 	}
 
 	private void setupCrafts() {
+		removeRecipe(new ItemStack(Block.sandStone));
 		GameRegistry.addRecipe(new ItemStack(redstoneBlock), new Object[] {
 			"XXX", "XXX", "XXX", Character.valueOf('X'), Item.redstone
 		});
@@ -147,6 +149,9 @@ public class EthilVan {
 		});
 		GameRegistry.addShapelessRecipe(new ItemStack(netherBrickWall, 1), new Object[] {new ItemStack(Block.netherFence, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Block.netherFence, 1), new Object[] {new ItemStack(netherBrickWall, 1)});
+		GameRegistry.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
+			"XX", "XX", Character.valueOf('X'), Block.sand
+		});
 	}
 
 	private void setupLanguages() {
@@ -191,5 +196,28 @@ public class EthilVan {
 		LanguageRegistry.addName(new ItemStack(stoneBrickWall, 1, 3), "Muret de briques de pierre sculptées");
 		LanguageRegistry.addName(netherBrickWall, "Muret de briques des Tréfonds");
 		LanguageRegistry.addName(brickWall, "Muret de briques");
+	}
+
+	private void removeRecipe(ItemStack resultItem) {
+		ItemStack recipeResult = null;
+		ArrayList recipes = (ArrayList) CraftingManager.getInstance().getRecipeList();
+
+		for (int scan = 0; scan < recipes.size(); scan++){
+			IRecipe tmpRecipe = (IRecipe) recipes.get(scan);
+			if (tmpRecipe instanceof ShapedRecipes) {
+				ShapedRecipes recipe = (ShapedRecipes)tmpRecipe;
+				recipeResult = recipe.getRecipeOutput();
+			}
+
+			if (tmpRecipe instanceof ShapelessRecipes) {
+				ShapelessRecipes recipe = (ShapelessRecipes)tmpRecipe;
+				recipeResult = recipe.getRecipeOutput();
+			}
+
+			if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) {
+				System.out.println("[EthilVan] Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.itemID);
+				recipes.remove(scan);
+			}
+		}
 	}
 }
