@@ -1,0 +1,18 @@
+[
+{
+  "modid": "ethilvan",
+  "name": "EthilVan",
+  "description": "EthilVan's new blocks, items, gui, entity ect...",
+  "version": "0.0.1",
+  "credits": "Created by EthilVan",
+  "logoFile": "",
+  "mcversion": "1.4.7",
+  "url": "http://ethilvan.fr",
+  "updateUrl": "",
+  "authors": [ "noogotte"],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": [
+         "mod_MinecraftForge"
+]
+}
