@@ -13,6 +13,8 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -51,6 +53,10 @@ public class EthilVan {
 	public static final Block stoneBrickWall = new BlockWallStoneBrick(234, Block.stoneBrick).setRequiresSelfNotify().setBlockName("stonebrickWall").setStepSound(Block.soundStoneFootstep);
 	public static final Block brickWall = new BlockWallBrick(235, Block.brick).setRequiresSelfNotify().setBlockName("brickWall").setStepSound(Block.soundStoneFootstep);
 	public static final Block netherBrickWall = new BlockWallNetherBrick(236, Block.netherBrick).setRequiresSelfNotify().setBlockName("netherbrickWall").setStepSound(Block.soundStoneFootstep);
+	public static final Block cob = new Block(2500, 17, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep)
+			.setCreativeTab(ethilvanTabs).setBlockName("cob").setTextureFile(CommonProxy.texture);
+	public static final Block cobTimbered = new BlockCobTimbered(2501, Material.rock);
+	public static final Block cobTimbered2 = new BlockCobTimbered2(2502, Material.rock);
 	/* Item */
 
 	@PreInit
@@ -73,10 +79,14 @@ public class EthilVan {
 		GameRegistry.registerBlock(stoneBrickWall, "stoneBrickWall");
 		GameRegistry.registerBlock(brickWall, "brickWall");
 		GameRegistry.registerBlock(netherBrickWall, "netherBrickWall");
+		GameRegistry.registerBlock(cob, "cob");
+		GameRegistry.registerBlock(cobTimbered, "cobTimbered");
+		GameRegistry.registerBlock(cobTimbered2, "cobTimbered2");
 		Item.itemsList[coloredGlass.blockID] = new ItemMultiTextureTile(coloredGlass.blockID - 256, coloredGlass, BlockColoredGlass.types).setItemName("coloredGlass");
 		Item.itemsList[carpet.blockID] = new ItemMultiTextureTile(carpet.blockID - 256, carpet, BlockCarpet.type).setItemName("carpet");
 		Item.itemsList[sandStoneWall.blockID] = new ItemMultiTextureTile(sandStoneWall.blockID - 256, sandStoneWall, BlockWallSandStone.types);
 		Item.itemsList[stoneBrickWall.blockID] = new ItemMultiTextureTile(stoneBrickWall.blockID - 256, stoneBrickWall, BlockWallStoneBrick.types);
+		Item.itemsList[cobTimbered2.blockID] = new ItemMultiTextureTile(cobTimbered2.blockID - 256, cobTimbered2, BlockCobTimbered2.faces);
 	}
 
 	private void setupCrafts() {
@@ -152,6 +162,18 @@ public class EthilVan {
 		GameRegistry.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
 			"XX", "XX", Character.valueOf('X'), Block.sand
 		});
+		GameRegistry.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
+			"XX", "XX", Character.valueOf('X'), Block.sand
+		});
+		GameRegistry.addRecipe(new ItemStack(cob, 3), new Object[] {
+			"CDC", "WCW", "CDC", Character.valueOf('C'), Item.clay, Character.valueOf('D'), new ItemStack(Item.dyePowder, 1, 15), Character.valueOf('W'), Item.wheat
+		});
+		GameRegistry.addRecipe(new ItemStack(cobTimbered, 9), new Object[] {
+			"WCW", "WCW", "WCW", Character.valueOf('C'), cob, Character.valueOf('W'), Block.wood
+		});
+		GameRegistry.addRecipe(new ItemStack(cobTimbered2, 9), new Object[] {
+			"CWC", "WCW", "CWC", Character.valueOf('C'), cob, Character.valueOf('W'), Block.wood
+		});
 	}
 
 	private void setupLanguages() {
@@ -196,6 +218,9 @@ public class EthilVan {
 		LanguageRegistry.addName(new ItemStack(stoneBrickWall, 1, 3), "Muret de briques de pierre sculptées");
 		LanguageRegistry.addName(netherBrickWall, "Muret de briques des Tréfonds");
 		LanguageRegistry.addName(brickWall, "Muret de briques");
+		LanguageRegistry.addName(cob, "Torchis");
+		LanguageRegistry.addName(cobTimbered, "Torchis");
+		LanguageRegistry.addName(cobTimbered2, "Torchis");
 	}
 
 	private void removeRecipe(ItemStack resultItem) {
@@ -215,7 +240,7 @@ public class EthilVan {
 			}
 
 			if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) {
-				System.out.println("[EthilVan] Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.itemID);
+				System.out.println("[EthilVan] Removed Recipe: " + recipeResult.itemID);
 				recipes.remove(scan);
 			}
 		}

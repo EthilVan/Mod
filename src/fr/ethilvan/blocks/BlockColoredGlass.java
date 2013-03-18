@@ -97,7 +97,7 @@ public class BlockColoredGlass extends BlockBreakable
 			return 16;
 		}
 
-		return metadata;
+		return 0;
 	}
 
 	@SideOnly(Side.CLIENT)
