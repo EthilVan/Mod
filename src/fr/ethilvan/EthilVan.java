@@ -13,8 +13,6 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -29,6 +27,7 @@ import fr.ethilvan.blocks.BlockCarpet;
 import fr.ethilvan.blocks.BlockCobTimbered;
 import fr.ethilvan.blocks.BlockCobTimbered2;
 import fr.ethilvan.blocks.BlockColoredGlass;
+import fr.ethilvan.blocks.BlockCustomStairs;
 import fr.ethilvan.blocks.BlockWallBrick;
 import fr.ethilvan.blocks.BlockWallNetherBrick;
 import fr.ethilvan.blocks.BlockWallSandStone;
@@ -59,6 +58,23 @@ public class EthilVan {
 			.setCreativeTab(ethilvanTabs).setBlockName("cob").setTextureFile(CommonProxy.texture);
 	public static final Block cobTimbered = new BlockCobTimbered(2501, Material.rock);
 	public static final Block cobTimbered2 = new BlockCobTimbered2(2502, Material.rock);
+	public static final Block stairsWoolWhite = (new BlockCustomStairs(2503, Block.cloth, 0)).setBlockName("stairsWoolWhite").setRequiresSelfNotify();
+	public static final Block stairsWoolOrange = (new BlockCustomStairs(2504, Block.cloth, 1)).setBlockName("stairsWoolOrange").setRequiresSelfNotify();
+	public static final Block stairsWoolMagenta = (new BlockCustomStairs(2505, Block.cloth, 2)).setBlockName("stairsWoolMagenta").setRequiresSelfNotify();
+	public static final Block stairsWoolLightBlue = (new BlockCustomStairs(2506, Block.cloth, 3)).setBlockName("stairsWoolLightBlue").setRequiresSelfNotify();
+	public static final Block stairsWoolYellow = (new BlockCustomStairs(2507, Block.cloth, 4)).setBlockName("stairsWoolYellow").setRequiresSelfNotify();
+	public static final Block stairsWoolLime = (new BlockCustomStairs(2508, Block.cloth, 5)).setBlockName("stairsWoolLime").setRequiresSelfNotify();
+	public static final Block stairsWoolPink = (new BlockCustomStairs(2509, Block.cloth, 6)).setBlockName("stairsWoolPink").setRequiresSelfNotify();
+	public static final Block stairsWoolGray = (new BlockCustomStairs(2510, Block.cloth, 7)).setBlockName("stairsWoolGray").setRequiresSelfNotify();
+	public static final Block stairsWoolLightGray = (new BlockCustomStairs(2511, Block.cloth, 8)).setBlockName("stairsWoolLightGray").setRequiresSelfNotify();
+	public static final Block stairsWoolCyan = (new BlockCustomStairs(2513, Block.cloth, 9)).setBlockName("stairsWoolCyan").setRequiresSelfNotify();
+	public static final Block stairsWoolPurple = (new BlockCustomStairs(2514, Block.cloth, 10)).setBlockName("stairsWoolPurple").setRequiresSelfNotify();
+	public static final Block stairsWoolBlue = (new BlockCustomStairs(2515, Block.cloth, 11)).setBlockName("stairsWoolBlue").setRequiresSelfNotify();
+	public static final Block stairsWoolBrown = (new BlockCustomStairs(2516, Block.cloth, 12)).setBlockName("stairsWoolBrown").setRequiresSelfNotify();
+	public static final Block stairsWoolGreen = (new BlockCustomStairs(2517, Block.cloth, 13)).setBlockName("stairsWoolGreen").setRequiresSelfNotify();
+	public static final Block stairsWoolRed = (new BlockCustomStairs(2518, Block.cloth, 14)).setBlockName("stairsWoolRed").setRequiresSelfNotify();
+	public static final Block stairsWoolBlack = new BlockCustomStairs(2519, Block.cloth, 15).setBlockName("stairsWoolBlack").setRequiresSelfNotify();
+
 	/* Item */
 
 	@PreInit
@@ -84,6 +100,22 @@ public class EthilVan {
 		GameRegistry.registerBlock(cob, "cob");
 		GameRegistry.registerBlock(cobTimbered, "cobTimbered");
 		GameRegistry.registerBlock(cobTimbered2, "cobTimbered2");
+		GameRegistry.registerBlock(stairsWoolWhite, "stairsWoolWhite");
+		GameRegistry.registerBlock(stairsWoolOrange, "stairsWoolOrange");
+		GameRegistry.registerBlock(stairsWoolMagenta, "stairsWoolMagenta");
+		GameRegistry.registerBlock(stairsWoolLightBlue, "stairsWoolLightBlue");
+		GameRegistry.registerBlock(stairsWoolYellow, "stairsWoolYellow");
+		GameRegistry.registerBlock(stairsWoolLime, "stairsWoolLime");
+		GameRegistry.registerBlock(stairsWoolPink, "stairsWoolPink");
+		GameRegistry.registerBlock(stairsWoolGray, "stairsWoolGray");
+		GameRegistry.registerBlock(stairsWoolLightGray, "stairsWoolLightGray");
+		GameRegistry.registerBlock(stairsWoolCyan, "stairsWoolCyan");
+		GameRegistry.registerBlock(stairsWoolPurple, "stairsWoolPurple");
+		GameRegistry.registerBlock(stairsWoolBlue, "stairsWoolBlue");
+		GameRegistry.registerBlock(stairsWoolBrown, "stairsWoolBrown");
+		GameRegistry.registerBlock(stairsWoolGreen, "stairsWoolGreen");
+		GameRegistry.registerBlock(stairsWoolRed, "stairsWoolRed");
+		GameRegistry.registerBlock(stairsWoolBlack, "stairsWoolBlack");
 		Item.itemsList[coloredGlass.blockID] = new ItemMultiTextureTile(coloredGlass.blockID - 256, coloredGlass, BlockColoredGlass.types).setItemName("coloredGlass");
 		Item.itemsList[carpet.blockID] = new ItemMultiTextureTile(carpet.blockID - 256, carpet, BlockCarpet.type).setItemName("carpet");
 		Item.itemsList[sandStoneWall.blockID] = new ItemMultiTextureTile(sandStoneWall.blockID - 256, sandStoneWall, BlockWallSandStone.types);
@@ -176,6 +208,10 @@ public class EthilVan {
 		GameRegistry.addRecipe(new ItemStack(cobTimbered2, 9), new Object[] {
 			"CWC", "WCW", "CWC", Character.valueOf('C'), cob, Character.valueOf('W'), Block.wood
 		});
+		for (int i = 0; i < 16; i++) {
+			GameRegistry.addRecipe(new ItemStack(stairsWoolWhite.blockID + i, 8, i), new Object[] {
+				"#  ", "## ", "###", Character.valueOf('#'), new ItemStack(Block.cloth, 1, i)});
+		}
 	}
 
 	private void setupLanguages() {
@@ -223,6 +259,22 @@ public class EthilVan {
 		LanguageRegistry.addName(cob, "Torchis");
 		LanguageRegistry.addName(cobTimbered, "Torchis");
 		LanguageRegistry.addName(new ItemStack(cobTimbered2, 1, 0), "Torchis");
+		LanguageRegistry.addName(stairsWoolWhite, "Escalier de laine blanc");
+		LanguageRegistry.addName(stairsWoolOrange, "Escalier de laine orange");
+		LanguageRegistry.addName(stairsWoolMagenta, "Escalier de laine magenta");
+		LanguageRegistry.addName(stairsWoolLightBlue, "Escalier de laine bleu clair");
+		LanguageRegistry.addName(stairsWoolYellow, "Escalier de laine jaune");
+		LanguageRegistry.addName(stairsWoolLime, "Escalier de laine vert clair");
+		LanguageRegistry.addName(stairsWoolPink, "Escalier de laine rose");
+		LanguageRegistry.addName(stairsWoolGray, "Escalier de laine gris");
+		LanguageRegistry.addName(stairsWoolLightGray, "Escalier de laine gris clair");
+		LanguageRegistry.addName(stairsWoolCyan, "Escalier de laine cyan");
+		LanguageRegistry.addName(stairsWoolPurple, "Escalier de laine violet");
+		LanguageRegistry.addName(stairsWoolBlue, "Escalier de laine bleu");
+		LanguageRegistry.addName(stairsWoolBrown, "Escalier de laine marron");
+		LanguageRegistry.addName(stairsWoolGreen, "Escalier de laine vert");
+		LanguageRegistry.addName(stairsWoolRed, "Escalier de laine rouge");
+		LanguageRegistry.addName(stairsWoolBlack, "Escalier de laine noir");
 	}
 
 	private void removeRecipe(ItemStack resultItem) {
