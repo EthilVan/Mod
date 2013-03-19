@@ -222,7 +222,7 @@ public class EthilVan {
 		LanguageRegistry.addName(brickWall, "Muret de briques");
 		LanguageRegistry.addName(cob, "Torchis");
 		LanguageRegistry.addName(cobTimbered, "Torchis");
-		LanguageRegistry.addName(cobTimbered2, "Torchis");
+		LanguageRegistry.addName(new ItemStack(cobTimbered2, 1, 0), "Torchis");
 	}
 
 	private void removeRecipe(ItemStack resultItem) {
