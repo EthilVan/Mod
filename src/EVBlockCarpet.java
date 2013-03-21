@@ -4,9 +4,9 @@ import java.util.List;
 
 public class EVBlockCarpet extends Block {
 
-    protected EVBlockCarpet(int par1, int par2, Material par3) {
-        super(par1, par2, Material.cloth);
-        this.setHardness(0.8F);
+	protected EVBlockCarpet(int par1, int par2, Material par3) {
+		super(par1, par2, Material.cloth);
+		this.setHardness(0.8F);
 		this.setStepSound(Block.soundClothFootstep);
 		this.setBlockName("this");
 		this.setLightOpacity(0);
@@ -14,11 +14,11 @@ public class EVBlockCarpet extends Block {
 		this.setTickRandomly(true);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
 		this.setRequiresSelfNotify();
-    }
+	}
 
-    public boolean isOpaqueCube() {
-        return false;
-    }
+	public boolean isOpaqueCube() {
+		return false;
+	}
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
@@ -26,100 +26,100 @@ public class EVBlockCarpet extends Block {
 		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)par2 + this.minX, (double)par3 + this.minY, (double)par4 + this.minZ, (double)par2 + this.maxX, (double)((float)par3 + (float)f), (double)par4 + this.maxZ);
 	}
 
-    public boolean renderAsNormalBlock() {
-        return false;
-    }
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
 
-    public int getBlockTextureFromSideAndMetadata(int side, int metadata) {
-        switch (metadata) {
-            case 0:
-                return 64;
+	public int getBlockTextureFromSideAndMetadata(int side, int metadata) {
+		switch (metadata) {
+		case 0:
+			return 64;
 
-            case 1:
-                return 210;
+		case 1:
+			return 210;
 
-            case 2:
-                return 194;
+		case 2:
+			return 194;
 
-            case 3:
-                return 178;
+		case 3:
+			return 178;
 
-            case 4:
-                return 162;
+		case 4:
+			return 162;
 
-            case 5:
-                return 146;
+		case 5:
+			return 146;
 
-            case 6:
-                return 130;
+		case 6:
+			return 130;
 
-            case 7:
-                return 114;
+		case 7:
+			return 114;
 
-            case 8:
-                return 225;
+		case 8:
+			return 225;
 
-            case 9:
-                return 209;
+		case 9:
+			return 209;
 
-            case 10:
-                return 193;
+		case 10:
+			return 193;
 
-            case 11:
-                return 177;
+		case 11:
+			return 177;
 
-            case 12:
-                return 161;
+		case 12:
+			return 161;
 
-            case 13:
-                return 145;
+		case 13:
+			return 145;
 
-            case 14:
-                return 129;
+		case 14:
+			return 129;
 
-            case 15:
-                return 113;
-        }
+		case 15:
+			return 113;
+		}
 
-        return metadata;
-    }
+		return metadata;
+	}
 
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-        for (int var4 = 0; var4 < 16; ++var4) {
-            par3List.add(new ItemStack(par1, 1, var4));
-        }
-    }
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+		for (int var4 = 0; var4 < 16; ++var4) {
+			par3List.add(new ItemStack(par1, 1, var4));
+		}
+	}
 
-    @Override
-    public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-        return par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) || BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4));
-    }
+	@Override
+	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
+		return par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) || BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4));
+	}
 
-    @Override
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-        boolean var6 = false;
+	@Override
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+		boolean var6 = false;
 
-        if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4))) {
-            var6 = true;
-        }
+		if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4))) {
+			var6 = true;
+		}
 
-        if (var6) {
-            this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-            par1World.setBlockWithNotify(par2, par3, par4, 0);
-        }
-    }
+		if (var6) {
+			this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
+			par1World.setBlockWithNotify(par2, par3, par4, 0);
+		}
+	}
 
-    @Override
+	@Override
 	public int damageDropped(int par1) {
-        return par1;
-    }
+		return par1;
+	}
 
-    @Override
-    public int getMobilityFlag() {
-        return 1;
-    }
+	@Override
+	public int getMobilityFlag() {
+		return 1;
+	}
 
-    public void registerName() {
+	public void registerName() {
 		ModLoader.addName(new ItemStack(this, 1, 0), "Tapis blanc");
 		ModLoader.addName(new ItemStack(this, 1, 1), "Tapis orange");
 		ModLoader.addName(new ItemStack(this, 1, 2), "Tapis magenta");
@@ -136,5 +136,5 @@ public class EVBlockCarpet extends Block {
 		ModLoader.addName(new ItemStack(this, 1, 13), "Tapis vert");
 		ModLoader.addName(new ItemStack(this, 1, 14), "Tapis rouge");
 		ModLoader.addName(new ItemStack(this, 1, 15), "Tapis noir");
-    }
+	}
 }

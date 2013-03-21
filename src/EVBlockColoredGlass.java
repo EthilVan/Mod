@@ -9,8 +9,8 @@ public class EVBlockColoredGlass extends BlockBreakable {
 		super(par1, par2, par3Material, par4);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setHardness(0.3F);
-        this.setStepSound(Block.soundGlassFootstep);
-        this.setBlockName("coloredGlass");
+		this.setStepSound(Block.soundGlassFootstep);
+		this.setBlockName("coloredGlass");
 	}
 
 	public int quantityDropped(Random par1Random) {
@@ -90,21 +90,21 @@ public class EVBlockColoredGlass extends BlockBreakable {
 	}
 
 	public void registerName() {
-        ModLoader.addName(new ItemStack(this, 1, 0), "Vitre blanche");
-        ModLoader.addName(new ItemStack(this, 1, 1), "Vitre orangée");
-        ModLoader.addName(new ItemStack(this, 1, 2), "Vitre magenta");
-        ModLoader.addName(new ItemStack(this, 1, 3), "Vitre bleu clair");
-        ModLoader.addName(new ItemStack(this, 1, 4), "Vitre jaune");
-        ModLoader.addName(new ItemStack(this, 1, 5), "Vitre vert clair");
-        ModLoader.addName(new ItemStack(this, 1, 6), "Vitre rose");
-        ModLoader.addName(new ItemStack(this, 1, 7), "Vitre grise");
-        ModLoader.addName(new ItemStack(this, 1, 8), "Vitre grise claire");
-        ModLoader.addName(new ItemStack(this, 1, 9), "Vitre cyan");
-        ModLoader.addName(new ItemStack(this, 1, 10), "Vitre violette");
-        ModLoader.addName(new ItemStack(this, 1, 11), "Vitre bleue");
-        ModLoader.addName(new ItemStack(this, 1, 12), "Vitre marron");
-        ModLoader.addName(new ItemStack(this, 1, 13), "Vitre verte");
-        ModLoader.addName(new ItemStack(this, 1, 14), "Vitre rouge");
-        ModLoader.addName(new ItemStack(this, 1, 15), "Vitre noire");
+		ModLoader.addName(new ItemStack(this, 1, 0), "Vitre blanche");
+		ModLoader.addName(new ItemStack(this, 1, 1), "Vitre orangée");
+		ModLoader.addName(new ItemStack(this, 1, 2), "Vitre magenta");
+		ModLoader.addName(new ItemStack(this, 1, 3), "Vitre bleu clair");
+		ModLoader.addName(new ItemStack(this, 1, 4), "Vitre jaune");
+		ModLoader.addName(new ItemStack(this, 1, 5), "Vitre vert clair");
+		ModLoader.addName(new ItemStack(this, 1, 6), "Vitre rose");
+		ModLoader.addName(new ItemStack(this, 1, 7), "Vitre grise");
+		ModLoader.addName(new ItemStack(this, 1, 8), "Vitre grise claire");
+		ModLoader.addName(new ItemStack(this, 1, 9), "Vitre cyan");
+		ModLoader.addName(new ItemStack(this, 1, 10), "Vitre violette");
+		ModLoader.addName(new ItemStack(this, 1, 11), "Vitre bleue");
+		ModLoader.addName(new ItemStack(this, 1, 12), "Vitre marron");
+		ModLoader.addName(new ItemStack(this, 1, 13), "Vitre verte");
+		ModLoader.addName(new ItemStack(this, 1, 14), "Vitre rouge");
+		ModLoader.addName(new ItemStack(this, 1, 15), "Vitre noire");
 	}
 }
