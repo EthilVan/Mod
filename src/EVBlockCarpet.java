@@ -2,28 +2,29 @@ package net.minecraft.src;
 
 import java.util.List;
 
-public class BlockCarpet extends Block
-{
-    public static final String[] carpetType = new String[] {"white", "orange", "magenta",
-            "light_blue", "yellow", "lime",
-            "pink", "gray", "light_gray",
-            "cyan", "purple", "blue",
-            "brown", "green", "red", "black" };
+public class EVBlockCarpet extends Block {
 
-    protected BlockCarpet(int par1, int par2, Material par3) {
+    protected EVBlockCarpet(int par1, int par2, Material par3) {
         super(par1, par2, Material.cloth);
-        setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-        setTickRandomly(true);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setHardness(0.8F);
+		this.setStepSound(Block.soundClothFootstep);
+		this.setBlockName("this");
+		this.setLightOpacity(0);
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+		this.setTickRandomly(true);
+		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setRequiresSelfNotify();
     }
 
     public boolean isOpaqueCube() {
         return false;
     }
 
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
-        return null;
-    }
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+		float f = 0.125F;
+		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)par2 + this.minX, (double)par3 + this.minY, (double)par4 + this.minZ, (double)par2 + this.maxX, (double)((float)par3 + (float)f), (double)par4 + this.maxZ);
+	}
 
     public boolean renderAsNormalBlock() {
         return false;
@@ -116,5 +117,24 @@ public class BlockCarpet extends Block
     @Override
     public int getMobilityFlag() {
         return 1;
+    }
+
+    public void registerName() {
+		ModLoader.addName(new ItemStack(this, 1, 0), "Tapis blanc");
+		ModLoader.addName(new ItemStack(this, 1, 1), "Tapis orange");
+		ModLoader.addName(new ItemStack(this, 1, 2), "Tapis magenta");
+		ModLoader.addName(new ItemStack(this, 1, 3), "Tapis bleu clair");
+		ModLoader.addName(new ItemStack(this, 1, 4), "Tapis jaune");
+		ModLoader.addName(new ItemStack(this, 1, 5), "Tapis vert clair");
+		ModLoader.addName(new ItemStack(this, 1, 6), "Tapis rose");
+		ModLoader.addName(new ItemStack(this, 1, 7), "Tapis gris");
+		ModLoader.addName(new ItemStack(this, 1, 8), "Tapis gris clair");
+		ModLoader.addName(new ItemStack(this, 1, 9), "Tapis cyan");
+		ModLoader.addName(new ItemStack(this, 1, 10), "Tapis violet");
+		ModLoader.addName(new ItemStack(this, 1, 11), "Tapis bleu");
+		ModLoader.addName(new ItemStack(this, 1, 12), "Tapis marron");
+		ModLoader.addName(new ItemStack(this, 1, 13), "Tapis vert");
+		ModLoader.addName(new ItemStack(this, 1, 14), "Tapis rouge");
+		ModLoader.addName(new ItemStack(this, 1, 15), "Tapis noir");
     }
 }
