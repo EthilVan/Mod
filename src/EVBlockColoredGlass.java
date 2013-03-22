@@ -89,7 +89,7 @@ public class EVBlockColoredGlass extends BlockBreakable {
 		return true;
 	}
 
-	public void registerName() {
+	public void registerNames() {
 		ModLoader.addName(new ItemStack(this, 1, 0), "Vitre blanche");
 		ModLoader.addName(new ItemStack(this, 1, 1), "Vitre orangée");
 		ModLoader.addName(new ItemStack(this, 1, 2), "Vitre magenta");
@@ -106,5 +106,13 @@ public class EVBlockColoredGlass extends BlockBreakable {
 		ModLoader.addName(new ItemStack(this, 1, 13), "Vitre verte");
 		ModLoader.addName(new ItemStack(this, 1, 14), "Vitre rouge");
 		ModLoader.addName(new ItemStack(this, 1, 15), "Vitre noire");
+	}
+
+	public void registerCrafts() {
+		for (int metaGlass = 0; metaGlass < 16; metaGlass++) {
+			ModLoader.addRecipe(new ItemStack(this, 4, metaGlass), new Object[] {
+				" X ", "XCX", " X ", 'X', Block.glass, 'C', new ItemStack(Item.dyePowder, 1, BlockCloth.getBlockFromDye(metaGlass))
+			});
+		}
 	}
 }

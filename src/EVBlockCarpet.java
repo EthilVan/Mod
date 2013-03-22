@@ -8,7 +8,7 @@ public class EVBlockCarpet extends Block {
 		super(par1, par2, Material.cloth);
 		this.setHardness(0.8F);
 		this.setStepSound(Block.soundClothFootstep);
-		this.setBlockName("this");
+		this.setBlockName("carpet");
 		this.setLightOpacity(0);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 		this.setTickRandomly(true);
@@ -119,7 +119,7 @@ public class EVBlockCarpet extends Block {
 		return 1;
 	}
 
-	public void registerName() {
+	public void registerNames() {
 		ModLoader.addName(new ItemStack(this, 1, 0), "Tapis blanc");
 		ModLoader.addName(new ItemStack(this, 1, 1), "Tapis orange");
 		ModLoader.addName(new ItemStack(this, 1, 2), "Tapis magenta");
@@ -136,5 +136,19 @@ public class EVBlockCarpet extends Block {
 		ModLoader.addName(new ItemStack(this, 1, 13), "Tapis vert");
 		ModLoader.addName(new ItemStack(this, 1, 14), "Tapis rouge");
 		ModLoader.addName(new ItemStack(this, 1, 15), "Tapis noir");
+	}
+
+	public void registerCrafts() {
+		for (int i = 0; i < 16; i++) {
+			ModLoader.addRecipe(new ItemStack(this, 8, i), new Object[] {
+				"XX", Character.valueOf('X'), new ItemStack(Block.cloth, 0, i)
+			});
+		}
+		for (int i = 0; i < 16; i++) {
+			for (int a = 0; a < 16; a++) {
+				ModLoader.addShapelessRecipe(new ItemStack(this, 1, a),
+						new Object[] {new ItemStack(this, 1, i), new ItemStack(Item.dyePowder, 1, BlockCloth.getDyeFromBlock(a))});
+			}
+		}
 	}
 }
