@@ -18,7 +18,7 @@ public class mod_EthilVan extends BaseMod {
 		setupCrafts();
 	}
 
-	public void setupBlocks() {
+	private void setupBlocks() {
 		redstoneBlock = new Block(230, Material.iron).setHardness(5.0F).setResistance(10.0F)
 				.setStepSound(Block.soundMetalFootstep).setBlockName("redstoneBlock").setCreativeTab(CreativeTabs.tabBlock);
 		ModLoader.registerBlock(redstoneBlock);
@@ -42,7 +42,7 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.registerBlock(netherBrickWall);
 	}
 
-	public void setupCrafts() {
+	private void setupCrafts() {
 		EVUtils.removeRecipe(new ItemStack(Block.sandStone));
 		ModLoader.addRecipe(new ItemStack(redstoneBlock, 1), new Object[] {
 			"XXX", "XXX", "XXX", Character.valueOf('X'), Item.redstone
@@ -64,7 +64,7 @@ public class mod_EthilVan extends BaseMod {
 		stoneBrickWall.registerCrafts();
 	}
 
-	public void setupLang() {
+	private void setupLang() {
 		ModLoader.addName(redstoneBlock, "Bloc de Redstone");
 		ModLoader.addName(brickWall, "Muret de briques");
 		ModLoader.addName(netherBrickWall, "Muret de briques des Tréfonds");
@@ -74,7 +74,7 @@ public class mod_EthilVan extends BaseMod {
 		stoneBrickWall.registerNames();
 	}
 
-	public void setupTexture() {
+	private void setupTexture() {
 		redstoneBlock.blockIndexInTexture = EVTextures.redstoneBlock;
 	}
 
