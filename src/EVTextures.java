@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class EVTextures {
+public final class EVTextures {
 
 	public static final int redstoneBlock = ModLoader.addOverride("/terrain.png", "/ethilvan/block/redstoneBlock.png");
 	public static final int whiteGl = ModLoader.addOverride("/terrain.png", "/ethilvan/block/glass/white.png");
@@ -19,4 +19,7 @@ public class EVTextures {
 	public static final int greenGl = ModLoader.addOverride("/terrain.png", "/ethilvan/block/glass/green.png");
 	public static final int redGl = ModLoader.addOverride("/terrain.png", "/ethilvan/block/glass/red.png");
 	public static final int blackGl = ModLoader.addOverride("/terrain.png", "/ethilvan/block/glass/black.png");
+
+	private EVTextures() {
+	}
 }
