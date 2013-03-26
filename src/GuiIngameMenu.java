@@ -26,8 +26,8 @@ public class GuiIngameMenu extends GuiScreen
         if (!this.mc.isIntegratedServerRunning())
         {
             ((GuiButton)this.controlList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
-            this.controlList.add(new GuiButton(10, this.width / 2 + 2, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
-            this.controlList.add(new GuiButton(11, this.width / 2 - 100, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
+            this.controlList.add(new GuiButton(10, this.width / 2 - 100, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
+            this.controlList.add(new GuiButton(11, this.width / 2 + 2, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
         }
 
         this.controlList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + var1, StatCollector.translateToLocal("menu.returnToGame")));
@@ -79,11 +79,13 @@ public class GuiIngameMenu extends GuiScreen
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
                 break;
+
 			case 10:
-				this.openUrl("http://ethilvan.fr");
+				EVUtils.openURL("http://ethilvan.fr");
 				break;
+
 			case 11:
-				this.openUrl("http://map.ethilvan.fr");
+				EVUtils.openURL("http://map.ethilvan.fr");
         }
     }
 
@@ -94,26 +96,6 @@ public class GuiIngameMenu extends GuiScreen
     {
         super.updateScreen();
         ++this.updateCounter;
-    }
-
-	private void openUrl(String url) {
-    	Desktop desktop = null;
-        java.net.URI uri;
-
-        try
-        {
-            uri = new java.net.URI(url);
-
-            if (Desktop.isDesktopSupported())
-            {
-                desktop = Desktop.getDesktop();
-                desktop.browse(uri);
-            }
-        }
-        catch (Exception ex)
-        {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**

@@ -224,26 +224,6 @@ public class GuiMainMenu extends GuiScreen
 		}
 	}
 
-	private void openUrl(String url) {
-		Desktop desktop = null;
-		java.net.URI uri;
-
-		try
-		{
-			uri = new java.net.URI(url);
-
-			if (Desktop.isDesktopSupported())
-			{
-				desktop = Desktop.getDesktop();
-				desktop.browse(uri);
-			}
-		}
-		catch (Exception ex)
-		{
-			Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
-
 	/**
 	 * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
 	 */
@@ -286,12 +266,12 @@ public class GuiMainMenu extends GuiScreen
 
 		if (par1GuiButton.id == 7)
 		{
-			this.openUrl("http://ethilvan.fr");
+			EVUtils.openURL("http://ethilvan.fr");
 		}
 
 		if (par1GuiButton.id == 8)
 		{
-			this.openUrl("http://map.ethilvan.fr");
+			EVUtils.openURL("http://map.ethilvan.fr");
 		}
 
 		if (par1GuiButton.id == 11)
