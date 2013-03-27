@@ -60,22 +60,22 @@ public class mod_EthilVan extends BaseMod {
 	}
 
 	private void setupWoolStairs() {
-		stairsWoolWhite = (BlockStairs) new BlockCustomStairs(237, Block.cloth, 0).setBlockName("stairsWoolWhite");
-		stairsWoolOrange = (BlockStairs) new BlockCustomStairs(238, Block.cloth, 1).setBlockName("stairsWoolOrange");
-		stairsWoolMagenta = (BlockStairs) new BlockCustomStairs(239, Block.cloth, 2).setBlockName("stairsWoolMagenta");
-		stairsWoolLightBlue = (BlockStairs) new BlockCustomStairs(240, Block.cloth, 3).setBlockName("stairsWoolLightBlue");
-		stairsWoolYellow = (BlockStairs) new BlockCustomStairs(241, Block.cloth, 4).setBlockName("stairsWoolYellow");
-		stairsWoolLime = (BlockStairs) new BlockCustomStairs(242, Block.cloth, 5).setBlockName("stairsWoolLime");
-		stairsWoolPink = (BlockStairs) new BlockCustomStairs(243, Block.cloth, 6).setBlockName("stairsWoolPink");
-		stairsWoolGray = (BlockStairs) new BlockCustomStairs(244, Block.cloth, 7).setBlockName("stairsWoolGray");
-		stairsWoolLightGray = (BlockStairs) new BlockCustomStairs(245, Block.cloth, 8).setBlockName("stairsWoolLightGray");
-		stairsWoolCyan = (BlockStairs) new BlockCustomStairs(246, Block.cloth, 9).setBlockName("stairsWoolCyan");
-		stairsWoolPurple = (BlockStairs) new BlockCustomStairs(247, Block.cloth, 10).setBlockName("stairsWoolPurple");
-		stairsWoolBlue = (BlockStairs) new BlockCustomStairs(248, Block.cloth, 11).setBlockName("stairsWoolBlue");
-		stairsWoolBrown = (BlockStairs) new BlockCustomStairs(249, Block.cloth, 12).setBlockName("stairsWoolBrown");
-		stairsWoolGreen = (BlockStairs) new BlockCustomStairs(250, Block.cloth, 13).setBlockName("stairsWoolGreen");
-		stairsWoolRed = (BlockStairs) new BlockCustomStairs(251, Block.cloth, 14).setBlockName("stairsWoolRed");
-		stairsWoolBlack = (BlockStairs) new BlockCustomStairs(252, Block.cloth, 15).setBlockName("stairsWoolBlack");
+		stairsWoolWhite = (BlockStairs) new EVBlockCustomStairs(237, Block.cloth, 0).setBlockName("stairsWoolWhite");
+		stairsWoolOrange = (BlockStairs) new EVBlockCustomStairs(238, Block.cloth, 1).setBlockName("stairsWoolOrange");
+		stairsWoolMagenta = (BlockStairs) new EVBlockCustomStairs(239, Block.cloth, 2).setBlockName("stairsWoolMagenta");
+		stairsWoolLightBlue = (BlockStairs) new EVBlockCustomStairs(240, Block.cloth, 3).setBlockName("stairsWoolLightBlue");
+		stairsWoolYellow = (BlockStairs) new EVBlockCustomStairs(241, Block.cloth, 4).setBlockName("stairsWoolYellow");
+		stairsWoolLime = (BlockStairs) new EVBlockCustomStairs(242, Block.cloth, 5).setBlockName("stairsWoolLime");
+		stairsWoolPink = (BlockStairs) new EVBlockCustomStairs(243, Block.cloth, 6).setBlockName("stairsWoolPink");
+		stairsWoolGray = (BlockStairs) new EVBlockCustomStairs(244, Block.cloth, 7).setBlockName("stairsWoolGray");
+		stairsWoolLightGray = (BlockStairs) new EVBlockCustomStairs(245, Block.cloth, 8).setBlockName("stairsWoolLightGray");
+		stairsWoolCyan = (BlockStairs) new EVBlockCustomStairs(246, Block.cloth, 9).setBlockName("stairsWoolCyan");
+		stairsWoolPurple = (BlockStairs) new EVBlockCustomStairs(247, Block.cloth, 10).setBlockName("stairsWoolPurple");
+		stairsWoolBlue = (BlockStairs) new EVBlockCustomStairs(248, Block.cloth, 11).setBlockName("stairsWoolBlue");
+		stairsWoolBrown = (BlockStairs) new EVBlockCustomStairs(249, Block.cloth, 12).setBlockName("stairsWoolBrown");
+		stairsWoolGreen = (BlockStairs) new EVBlockCustomStairs(250, Block.cloth, 13).setBlockName("stairsWoolGreen");
+		stairsWoolRed = (BlockStairs) new EVBlockCustomStairs(251, Block.cloth, 14).setBlockName("stairsWoolRed");
+		stairsWoolBlack = (BlockStairs) new EVBlockCustomStairs(252, Block.cloth, 15).setBlockName("stairsWoolBlack");
 		ModLoader.registerBlock(stairsWoolWhite);
 		ModLoader.registerBlock(stairsWoolOrange);
 		ModLoader.registerBlock(stairsWoolMagenta);
