@@ -37,6 +37,6 @@ public class ItemShears extends Item
      */
     public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
     {
-        return par2Block.blockID != Block.web.blockID && par2Block.blockID != Block.leaves.blockID ? (par2Block.blockID == Block.cloth.blockID || par2Block.blockID == mod_EthilVan.carpet.blockID ? 5.0F : super.getStrVsBlock(par1ItemStack, par2Block)) : 15.0F;
+        return par2Block.blockID != Block.web.blockID && par2Block.blockID != Block.leaves.blockID ? (par2Block.blockID == Block.cloth.blockID || par2Block.blockID == mod_EthilVan.carpet.blockID || EVUtils.isWoolStairs(par2Block.blockID) ? 5.0F : super.getStrVsBlock(par1ItemStack, par2Block)) : 15.0F;
     }
 }

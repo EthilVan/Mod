@@ -9,6 +9,22 @@ public class mod_EthilVan extends BaseMod {
 	public static EVBlockWallStonebrick stoneBrickWall;
 	public static EVBlockWallNetherBrick netherBrickWall;
 	public static EVBlockWallBrick brickWall;
+	public static BlockStairs stairsWoolWhite;
+	public static BlockStairs stairsWoolOrange;
+	public static BlockStairs stairsWoolMagenta;
+	public static BlockStairs stairsWoolLightBlue;
+	public static BlockStairs stairsWoolYellow;
+	public static BlockStairs stairsWoolLime;
+	public static BlockStairs stairsWoolPink;
+	public static BlockStairs stairsWoolGray;
+	public static BlockStairs stairsWoolLightGray;
+	public static BlockStairs stairsWoolCyan;
+	public static BlockStairs stairsWoolPurple;
+	public static BlockStairs stairsWoolBlue;
+	public static BlockStairs stairsWoolBrown;
+	public static BlockStairs stairsWoolGreen;
+	public static BlockStairs stairsWoolRed;
+	public static BlockStairs stairsWoolBlack;
 
 	@Override
 	public void load() {
@@ -19,6 +35,7 @@ public class mod_EthilVan extends BaseMod {
 	}
 
 	private void setupBlocks() {
+		setupWoolStairs();
 		redstoneBlock = new Block(230, Material.iron).setHardness(5.0F).setResistance(10.0F)
 				.setStepSound(Block.soundMetalFootstep).setBlockName("redstoneBlock").setCreativeTab(CreativeTabs.tabBlock);
 		ModLoader.registerBlock(redstoneBlock);
@@ -42,6 +59,41 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.registerBlock(netherBrickWall);
 	}
 
+	private void setupWoolStairs() {
+		stairsWoolWhite = (BlockStairs) new BlockCustomStairs(237, Block.cloth, 0).setBlockName("stairsWoolWhite");
+		stairsWoolOrange = (BlockStairs) new BlockCustomStairs(238, Block.cloth, 1).setBlockName("stairsWoolOrange");
+		stairsWoolMagenta = (BlockStairs) new BlockCustomStairs(239, Block.cloth, 2).setBlockName("stairsWoolMagenta");
+		stairsWoolLightBlue = (BlockStairs) new BlockCustomStairs(240, Block.cloth, 3).setBlockName("stairsWoolLightBlue");
+		stairsWoolYellow = (BlockStairs) new BlockCustomStairs(241, Block.cloth, 4).setBlockName("stairsWoolYellow");
+		stairsWoolLime = (BlockStairs) new BlockCustomStairs(242, Block.cloth, 5).setBlockName("stairsWoolLime");
+		stairsWoolPink = (BlockStairs) new BlockCustomStairs(243, Block.cloth, 6).setBlockName("stairsWoolPink");
+		stairsWoolGray = (BlockStairs) new BlockCustomStairs(244, Block.cloth, 7).setBlockName("stairsWoolGray");
+		stairsWoolLightGray = (BlockStairs) new BlockCustomStairs(245, Block.cloth, 8).setBlockName("stairsWoolLightGray");
+		stairsWoolCyan = (BlockStairs) new BlockCustomStairs(246, Block.cloth, 9).setBlockName("stairsWoolCyan");
+		stairsWoolPurple = (BlockStairs) new BlockCustomStairs(247, Block.cloth, 10).setBlockName("stairsWoolPurple");
+		stairsWoolBlue = (BlockStairs) new BlockCustomStairs(248, Block.cloth, 11).setBlockName("stairsWoolBlue");
+		stairsWoolBrown = (BlockStairs) new BlockCustomStairs(249, Block.cloth, 12).setBlockName("stairsWoolBrown");
+		stairsWoolGreen = (BlockStairs) new BlockCustomStairs(250, Block.cloth, 13).setBlockName("stairsWoolGreen");
+		stairsWoolRed = (BlockStairs) new BlockCustomStairs(251, Block.cloth, 14).setBlockName("stairsWoolRed");
+		stairsWoolBlack = (BlockStairs) new BlockCustomStairs(252, Block.cloth, 15).setBlockName("stairsWoolBlack");
+		ModLoader.registerBlock(stairsWoolWhite);
+		ModLoader.registerBlock(stairsWoolOrange);
+		ModLoader.registerBlock(stairsWoolMagenta);
+		ModLoader.registerBlock(stairsWoolLightBlue);
+		ModLoader.registerBlock(stairsWoolYellow);
+		ModLoader.registerBlock(stairsWoolLime);
+		ModLoader.registerBlock(stairsWoolPink);
+		ModLoader.registerBlock(stairsWoolGray);
+		ModLoader.registerBlock(stairsWoolLightGray);
+		ModLoader.registerBlock(stairsWoolCyan);
+		ModLoader.registerBlock(stairsWoolPurple);
+		ModLoader.registerBlock(stairsWoolBlue);
+		ModLoader.registerBlock(stairsWoolBrown);
+		ModLoader.registerBlock(stairsWoolGreen);
+		ModLoader.registerBlock(stairsWoolRed);
+		ModLoader.registerBlock(stairsWoolBlack);
+	}
+
 	private void setupCrafts() {
 		EVUtils.removeRecipe(new ItemStack(Block.sandStone));
 		ModLoader.addRecipe(new ItemStack(redstoneBlock, 1), new Object[] {
@@ -58,6 +110,7 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
 			"XX", "XX", Character.valueOf('X'), Block.sand
 		});
+		EVUtils.registerWoolStairsCraft();
 		coloredGlass.registerCrafts();
 		carpet.registerCrafts();
 		sandStoneWall.registerCrafts();
@@ -72,6 +125,7 @@ public class mod_EthilVan extends BaseMod {
 		carpet.registerNames();
 		sandStoneWall.registerNames();
 		stoneBrickWall.registerNames();
+		EVUtils.registerWoolStairsName();
 	}
 
 	private void setupTexture() {
