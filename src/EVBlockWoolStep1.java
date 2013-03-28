@@ -78,9 +78,7 @@ public class EVBlockWoolStep1 extends BlockHalfSlab {
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		if (par1 != mod_EthilVan.doubleWoolStep1.blockID) {
 			for (int var4 = 0; var4 < 8; ++var4) {
-				if (var4 != 2) {
-					par3List.add(new ItemStack(par1, 1, var4));
-				}
+				par3List.add(new ItemStack(par1, 1, var4));
 			}
 		} 
 	}
