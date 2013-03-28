@@ -87,4 +87,13 @@ public final class EVUtils {
 		return id >= mod_EthilVan.stairsWoolWhite.blockID
 				|| id <= mod_EthilVan.stairsWoolBlack.blockID;
 	}
+
+	public static boolean isWoolStep(int id) {
+		return id == mod_EthilVan.singleWoolStep1.blockID || id == mod_EthilVan.doubleWoolStep1.blockID
+				|| id == mod_EthilVan.singleWoolStep2.blockID || id == mod_EthilVan.doubleWoolStep2.blockID;
+	}
+
+	public static boolean isWool(int id) {
+		return isWoolStairs(id) || isWoolStep(id);
+	}
 }

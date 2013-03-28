@@ -25,6 +25,10 @@ public class mod_EthilVan extends BaseMod {
 	public static BlockStairs stairsWoolGreen;
 	public static BlockStairs stairsWoolRed;
 	public static BlockStairs stairsWoolBlack;
+	public static BlockHalfSlab singleWoolStep1;
+	public static BlockHalfSlab doubleWoolStep1;
+	public static BlockHalfSlab singleWoolStep2;
+	public static BlockHalfSlab doubleWoolStep2;
 
 	@Override
 	public void load() {
@@ -57,6 +61,18 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.registerBlock(brickWall);
 		netherBrickWall = (EVBlockWallNetherBrick) new EVBlockWallNetherBrick(236, Block.netherBrick).setBlockName("netherbrickWall");
 		ModLoader.registerBlock(netherBrickWall);
+		singleWoolStep1 = new EVBlockWoolStep1(226, false, Material.cloth);
+		doubleWoolStep1 = new EVBlockWoolStep1(228, true, Material.cloth);
+		ModLoader.registerBlock(singleWoolStep1);
+		ModLoader.registerBlock(doubleWoolStep1);
+		singleWoolStep2 = new EVBlockWoolStep2(227, false, Material.cloth);
+		doubleWoolStep2 = new EVBlockWoolStep2(229, true, Material.cloth);
+		ModLoader.registerBlock(singleWoolStep2);
+		ModLoader.registerBlock(doubleWoolStep2);
+		Item.itemsList[singleWoolStep1.blockID] = new ItemSlab(singleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, false).setItemName("woolSlab");
+		Item.itemsList[doubleWoolStep1.blockID] = new ItemSlab(doubleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, true).setItemName("woolSlab");
+		Item.itemsList[singleWoolStep2.blockID] = new ItemSlab(singleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, false).setItemName("woolSlab");
+		Item.itemsList[doubleWoolStep2.blockID] = new ItemSlab(doubleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, true).setItemName("woolSlab");
 	}
 
 	private void setupWoolStairs() {
@@ -115,6 +131,8 @@ public class mod_EthilVan extends BaseMod {
 		carpet.registerCrafts();
 		sandStoneWall.registerCrafts();
 		stoneBrickWall.registerCrafts();
+		EVBlockWoolStep1.registerCrafts();
+		EVBlockWoolStep2.registerCrafts();
 	}
 
 	private void setupLang() {
@@ -126,6 +144,8 @@ public class mod_EthilVan extends BaseMod {
 		sandStoneWall.registerNames();
 		stoneBrickWall.registerNames();
 		EVUtils.registerWoolStairsName();
+		EVBlockWoolStep1.registerNames();
+		EVBlockWoolStep2.registerNames();
 	}
 
 	private void setupTexture() {
