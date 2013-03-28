@@ -89,6 +89,8 @@ public class EVBlockColoredGlass extends BlockBreakable {
 		return true;
 	}
 
+	
+
 	public void registerNames() {
 		ModLoader.addName(new ItemStack(this, 1, 0), "Vitre blanche");
 		ModLoader.addName(new ItemStack(this, 1, 1), "Vitre orangée");
@@ -106,6 +108,16 @@ public class EVBlockColoredGlass extends BlockBreakable {
 		ModLoader.addName(new ItemStack(this, 1, 13), "Vitre verte");
 		ModLoader.addName(new ItemStack(this, 1, 14), "Vitre rouge");
 		ModLoader.addName(new ItemStack(this, 1, 15), "Vitre noire");
+	}
+
+	@Override
+	public int idPicked(World par1World, int par2, int par3, int par4) {
+		return mod_EthilVan.coloredGlass.blockID;
+	}
+
+	@Override
+	public int damageDropped(int par1) {
+		return par1;
 	}
 
 	public void registerCrafts() {
