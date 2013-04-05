@@ -18,32 +18,8 @@ public class EVBlockWoolStep1 extends BlockHalfSlab {
 	/**
 	 * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
 	 */
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		switch (par2 & 7) {
-		case 1:
-			return 210;
-		case 2:
-			return 194;
-		case 3:
-			return 178;
-		case 4:
-			return 162;
-		case 5:
-			return 146;
-		case 6:
-			return 130;
-		case 7:
-			return 114;
-		default:
-			return 64;
-		}
-	}
-
-	/**
-	 * Returns the block texture based on the side being looked at.  Args: side
-	 */
-	public int getBlockTextureFromSide(int par1) {
-		return mod_EthilVan.singleWoolStep1.getBlockTextureFromSideAndMetadata(par1, 0);
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return Block.cloth.getBlockTextureFromSideAndMetadata(par1, par2);
 	}
 
 	/**
@@ -69,7 +45,7 @@ public class EVBlockWoolStep1 extends BlockHalfSlab {
 			par1 = 0;
 		}
 
-		return super.getBlockName() + "." + woolType[par1];
+		return super.getUnlocalizedName() + "." + woolType[par1];
 	}
 
 	/**
@@ -109,4 +85,6 @@ public class EVBlockWoolStep1 extends BlockHalfSlab {
 			});
 		}
 	}
+
+    public void registerIcons(IconRegister par1IconRegister) {}
 }

@@ -41,57 +41,57 @@ public class mod_EthilVan extends BaseMod {
 	private void setupBlocks() {
 		setupWoolStairs();
 		redstoneBlock = new Block(230, Material.iron).setHardness(5.0F).setResistance(10.0F)
-				.setStepSound(Block.soundMetalFootstep).setBlockName("redstoneBlock").setCreativeTab(CreativeTabs.tabBlock);
+				.setStepSound(Block.soundMetalFootstep).getIndirectPowerOutput("ev_redstoneBlock").setCreativeTab(CreativeTabs.tabBlock);
 		ModLoader.registerBlock(redstoneBlock);
-		coloredGlass = new EVBlockColoredGlass(231, 0, Material.glass, false);
+		coloredGlass = (EVBlockColoredGlass) new EVBlockColoredGlass(231, Material.glass, false).getIndirectPowerOutput("ev_coloredGlass");
 		ModLoader.registerBlock(coloredGlass);
 		Item.itemsList[coloredGlass.blockID] = new ItemMultiTextureTile(coloredGlass.blockID - 256,
-				coloredGlass, EVUtils.woolType).setItemName("coloredGlass");
-		carpet = new EVBlockCarpet(232, 0, Material.cloth);
+				coloredGlass, EVUtils.woolType).setUnlocalizedName("coloredGlass");
+		carpet = (EVBlockCarpet) new EVBlockCarpet(232, Material.cloth).getIndirectPowerOutput("carpet");
 		ModLoader.registerBlock(carpet);
 		Item.itemsList[carpet.blockID] = new ItemMultiTextureTile(carpet.blockID - 256,
-				carpet, EVUtils.woolType).setItemName("carpet");
-		sandStoneWall = (EVBlockWallSandstone) new EVBlockWallSandstone(233, Block.sandStone).setBlockName("sandStoneWall");
+				carpet, EVUtils.woolType).setUnlocalizedName("carpet");
+		sandStoneWall = (EVBlockWallSandstone) new EVBlockWallSandstone(233, Block.sandStone).getIndirectPowerOutput("sandStoneWall");
 		ModLoader.registerBlock(sandStoneWall);
 		Item.itemsList[sandStoneWall.blockID] = new ItemMultiTextureTile(sandStoneWall.blockID - 256, sandStoneWall, EVBlockWallSandstone.types);
-		stoneBrickWall = (EVBlockWallStonebrick) new EVBlockWallStonebrick(234, Block.stoneBrick).setBlockName("stoneBrickWall");
+		stoneBrickWall = (EVBlockWallStonebrick) new EVBlockWallStonebrick(234, Block.stoneBrick).getIndirectPowerOutput("stoneBrickWall");
 		ModLoader.registerBlock(stoneBrickWall);
 		Item.itemsList[stoneBrickWall.blockID] = new ItemMultiTextureTile(stoneBrickWall.blockID - 256, stoneBrickWall, BlockStoneBrick.STONE_BRICK_TYPES);
-		brickWall = (EVBlockWallBrick) new EVBlockWallBrick(235, Block.brick).setBlockName("brickWall");
+		brickWall = (EVBlockWallBrick) new EVBlockWallBrick(235, Block.brick).getIndirectPowerOutput("brickWall");
 		ModLoader.registerBlock(brickWall);
-		netherBrickWall = (EVBlockWallNetherBrick) new EVBlockWallNetherBrick(236, Block.netherBrick).setBlockName("netherbrickWall");
+		netherBrickWall = (EVBlockWallNetherBrick) new EVBlockWallNetherBrick(236, Block.netherBrick).getIndirectPowerOutput("netherbrickWall");
 		ModLoader.registerBlock(netherBrickWall);
-		singleWoolStep1 = new EVBlockWoolStep1(226, false, Material.cloth);
-		doubleWoolStep1 = new EVBlockWoolStep1(228, true, Material.cloth);
+		singleWoolStep1 = (BlockHalfSlab) new EVBlockWoolStep1(226, false, Material.cloth).getIndirectPowerOutput("woolStep");
+		doubleWoolStep1 = (BlockHalfSlab) new EVBlockWoolStep1(228, true, Material.cloth).getIndirectPowerOutput("woolStep");
 		ModLoader.registerBlock(singleWoolStep1);
 		ModLoader.registerBlock(doubleWoolStep1);
-		singleWoolStep2 = new EVBlockWoolStep2(227, false, Material.cloth);
-		doubleWoolStep2 = new EVBlockWoolStep2(229, true, Material.cloth);
+		singleWoolStep2 = (BlockHalfSlab) new EVBlockWoolStep2(227, false, Material.cloth).getIndirectPowerOutput("woolStep");
+		doubleWoolStep2 = (BlockHalfSlab) new EVBlockWoolStep2(229, true, Material.cloth).getIndirectPowerOutput("woolStep");
 		ModLoader.registerBlock(singleWoolStep2);
 		ModLoader.registerBlock(doubleWoolStep2);
-		Item.itemsList[singleWoolStep1.blockID] = new ItemSlab(singleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, false).setItemName("woolSlab");
-		Item.itemsList[doubleWoolStep1.blockID] = new ItemSlab(doubleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, true).setItemName("woolSlab");
-		Item.itemsList[singleWoolStep2.blockID] = new ItemSlab(singleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, false).setItemName("woolSlab");
-		Item.itemsList[doubleWoolStep2.blockID] = new ItemSlab(doubleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, true).setItemName("woolSlab");
+		Item.itemsList[singleWoolStep1.blockID] = new ItemSlab(singleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, false).setUnlocalizedName("woolSlab");
+		Item.itemsList[doubleWoolStep1.blockID] = new ItemSlab(doubleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, true).setUnlocalizedName("woolSlab");
+		Item.itemsList[singleWoolStep2.blockID] = new ItemSlab(singleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, false).setUnlocalizedName("woolSlab");
+		Item.itemsList[doubleWoolStep2.blockID] = new ItemSlab(doubleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, true).setUnlocalizedName("woolSlab");
 	}
 
 	private void setupWoolStairs() {
-		stairsWoolWhite = (BlockStairs) new EVBlockCustomStairs(237, Block.cloth, 0).setBlockName("stairsWoolWhite");
-		stairsWoolOrange = (BlockStairs) new EVBlockCustomStairs(238, Block.cloth, 1).setBlockName("stairsWoolOrange");
-		stairsWoolMagenta = (BlockStairs) new EVBlockCustomStairs(239, Block.cloth, 2).setBlockName("stairsWoolMagenta");
-		stairsWoolLightBlue = (BlockStairs) new EVBlockCustomStairs(240, Block.cloth, 3).setBlockName("stairsWoolLightBlue");
-		stairsWoolYellow = (BlockStairs) new EVBlockCustomStairs(241, Block.cloth, 4).setBlockName("stairsWoolYellow");
-		stairsWoolLime = (BlockStairs) new EVBlockCustomStairs(242, Block.cloth, 5).setBlockName("stairsWoolLime");
-		stairsWoolPink = (BlockStairs) new EVBlockCustomStairs(243, Block.cloth, 6).setBlockName("stairsWoolPink");
-		stairsWoolGray = (BlockStairs) new EVBlockCustomStairs(244, Block.cloth, 7).setBlockName("stairsWoolGray");
-		stairsWoolLightGray = (BlockStairs) new EVBlockCustomStairs(245, Block.cloth, 8).setBlockName("stairsWoolLightGray");
-		stairsWoolCyan = (BlockStairs) new EVBlockCustomStairs(246, Block.cloth, 9).setBlockName("stairsWoolCyan");
-		stairsWoolPurple = (BlockStairs) new EVBlockCustomStairs(247, Block.cloth, 10).setBlockName("stairsWoolPurple");
-		stairsWoolBlue = (BlockStairs) new EVBlockCustomStairs(248, Block.cloth, 11).setBlockName("stairsWoolBlue");
-		stairsWoolBrown = (BlockStairs) new EVBlockCustomStairs(249, Block.cloth, 12).setBlockName("stairsWoolBrown");
-		stairsWoolGreen = (BlockStairs) new EVBlockCustomStairs(250, Block.cloth, 13).setBlockName("stairsWoolGreen");
-		stairsWoolRed = (BlockStairs) new EVBlockCustomStairs(251, Block.cloth, 14).setBlockName("stairsWoolRed");
-		stairsWoolBlack = (BlockStairs) new EVBlockCustomStairs(252, Block.cloth, 15).setBlockName("stairsWoolBlack");
+		stairsWoolWhite = (BlockStairs) new EVBlockCustomStairs(237, Block.cloth, 0).getIndirectPowerOutput("stairsWoolWhite");
+		stairsWoolOrange = (BlockStairs) new EVBlockCustomStairs(238, Block.cloth, 1).getIndirectPowerOutput("stairsWoolOrange");
+		stairsWoolMagenta = (BlockStairs) new EVBlockCustomStairs(239, Block.cloth, 2).getIndirectPowerOutput("stairsWoolMagenta");
+		stairsWoolLightBlue = (BlockStairs) new EVBlockCustomStairs(240, Block.cloth, 3).getIndirectPowerOutput("stairsWoolLightBlue");
+		stairsWoolYellow = (BlockStairs) new EVBlockCustomStairs(241, Block.cloth, 4).getIndirectPowerOutput("stairsWoolYellow");
+		stairsWoolLime = (BlockStairs) new EVBlockCustomStairs(242, Block.cloth, 5).getIndirectPowerOutput("stairsWoolLime");
+		stairsWoolPink = (BlockStairs) new EVBlockCustomStairs(243, Block.cloth, 6).getIndirectPowerOutput("stairsWoolPink");
+		stairsWoolGray = (BlockStairs) new EVBlockCustomStairs(244, Block.cloth, 7).getIndirectPowerOutput("stairsWoolGray");
+		stairsWoolLightGray = (BlockStairs) new EVBlockCustomStairs(245, Block.cloth, 8).getIndirectPowerOutput("stairsWoolLightGray");
+		stairsWoolCyan = (BlockStairs) new EVBlockCustomStairs(246, Block.cloth, 9).getIndirectPowerOutput("stairsWoolCyan");
+		stairsWoolPurple = (BlockStairs) new EVBlockCustomStairs(247, Block.cloth, 10).getIndirectPowerOutput("stairsWoolPurple");
+		stairsWoolBlue = (BlockStairs) new EVBlockCustomStairs(248, Block.cloth, 11).getIndirectPowerOutput("stairsWoolBlue");
+		stairsWoolBrown = (BlockStairs) new EVBlockCustomStairs(249, Block.cloth, 12).getIndirectPowerOutput("stairsWoolBrown");
+		stairsWoolGreen = (BlockStairs) new EVBlockCustomStairs(250, Block.cloth, 13).getIndirectPowerOutput("stairsWoolGreen");
+		stairsWoolRed = (BlockStairs) new EVBlockCustomStairs(251, Block.cloth, 14).getIndirectPowerOutput("stairsWoolRed");
+		stairsWoolBlack = (BlockStairs) new EVBlockCustomStairs(252, Block.cloth, 15).getIndirectPowerOutput("stairsWoolBlack");
 		ModLoader.registerBlock(stairsWoolWhite);
 		ModLoader.registerBlock(stairsWoolOrange);
 		ModLoader.registerBlock(stairsWoolMagenta);
@@ -149,7 +149,6 @@ public class mod_EthilVan extends BaseMod {
 	}
 
 	private void setupTexture() {
-		redstoneBlock.blockIndexInTexture = EVTextures.redstoneBlock;
 	}
 
 	private void registerCraft() {

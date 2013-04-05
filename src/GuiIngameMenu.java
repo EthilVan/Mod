@@ -1,10 +1,5 @@
 package net.minecraft.src;
 
-import java.awt.Desktop;
-import java.awt.Menu;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class GuiIngameMenu extends GuiScreen
 {
     /** Also counts the number of updates, not certain as to why yet. */
@@ -19,23 +14,23 @@ public class GuiIngameMenu extends GuiScreen
     public void initGui()
     {
         this.updateCounter2 = 0;
-        this.controlList.clear();
+        this.buttonList.clear();
         byte var1 = -16;
-        this.controlList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + var1, StatCollector.translateToLocal("menu.returnToMenu")));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + var1, StatCollector.translateToLocal("menu.returnToMenu")));
 
         if (!this.mc.isIntegratedServerRunning())
         {
-            ((GuiButton)this.controlList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
-            this.controlList.add(new GuiButton(10, this.width / 2 - 100, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
-            this.controlList.add(new GuiButton(11, this.width / 2 + 2, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
+            ((GuiButton)this.buttonList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
+            this.buttonList.add(new GuiButton(8, this.width / 2 - 100, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
+            this.buttonList.add(new GuiButton(9, this.width / 2 + 2, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
         }
 
-        this.controlList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + var1, StatCollector.translateToLocal("menu.returnToGame")));
-        this.controlList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.options")));
+        this.buttonList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + var1, StatCollector.translateToLocal("menu.returnToGame")));
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.options")));
         GuiButton var3;
-        this.controlList.add(var3 = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.shareToLan")));
-        this.controlList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.achievements")));
-        this.controlList.add(new GuiButton(6, this.width / 2 + 2, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.stats")));
+        this.buttonList.add(var3 = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.shareToLan")));
+        this.buttonList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.achievements")));
+        this.buttonList.add(new GuiButton(6, this.width / 2 + 2, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("gui.stats")));
         var3.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic();
     }
 
@@ -78,13 +73,13 @@ public class GuiIngameMenu extends GuiScreen
 
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
-                break;
+				break;
 
-			case 10:
+            case 8:
 				EVUtils.openURL("http://ethilvan.fr");
 				break;
 
-			case 11:
+			case 9:
 				EVUtils.openURL("http://map.ethilvan.fr");
         }
     }
