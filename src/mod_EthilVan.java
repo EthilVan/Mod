@@ -29,6 +29,9 @@ public class mod_EthilVan extends BaseMod {
 	public static BlockHalfSlab doubleWoolStep1;
 	public static BlockHalfSlab singleWoolStep2;
 	public static BlockHalfSlab doubleWoolStep2;
+	public static Block cob;
+	public static EVBlockCobTimbered cob_timbered;
+	public static EVBlockCobTimbered2 cob_timbered2;
 
 	@Override
 	public void load() {
@@ -73,6 +76,14 @@ public class mod_EthilVan extends BaseMod {
 		Item.itemsList[doubleWoolStep1.blockID] = new ItemSlab(doubleWoolStep1.blockID - 256, singleWoolStep1, doubleWoolStep1, true).setUnlocalizedName("woolSlab");
 		Item.itemsList[singleWoolStep2.blockID] = new ItemSlab(singleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, false).setUnlocalizedName("woolSlab");
 		Item.itemsList[doubleWoolStep2.blockID] = new ItemSlab(doubleWoolStep2.blockID - 256, singleWoolStep2, doubleWoolStep2, true).setUnlocalizedName("woolSlab");
+		cob = new Block(223, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep)
+				.setCreativeTab(CreativeTabs.tabBlock).getIndirectPowerOutput("ev_cob");
+		ModLoader.registerBlock(cob);
+		cob_timbered = new EVBlockCobTimbered(224, Material.rock);
+		ModLoader.registerBlock(cob_timbered);
+		cob_timbered2 = new EVBlockCobTimbered2(225, Material.rock);
+		ModLoader.registerBlock(cob_timbered2);
+		Item.itemsList[cob_timbered2.blockID] = new ItemMultiTextureTile(cob_timbered2.blockID - 256, cob_timbered2, EVBlockCobTimbered2.faces).setUnlocalizedName("cobTimbered");
 	}
 
 	private void setupWoolStairs() {
@@ -126,6 +137,9 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
 			"XX", "XX", Character.valueOf('X'), Block.sand
 		});
+		ModLoader.addRecipe(new ItemStack(cob, 3), new Object[] {
+			"CDC", "WCW", "CDC", Character.valueOf('C'), Item.clay, Character.valueOf('D'), new ItemStack(Item.dyePowder, 1, 15), Character.valueOf('W'), Item.wheat
+		});
 		EVUtils.registerWoolStairsCraft();
 		coloredGlass.registerCrafts();
 		carpet.registerCrafts();
@@ -133,12 +147,17 @@ public class mod_EthilVan extends BaseMod {
 		stoneBrickWall.registerCrafts();
 		EVBlockWoolStep1.registerCrafts();
 		EVBlockWoolStep2.registerCrafts();
+		cob_timbered.registerCraft();
+		cob_timbered2.registerCraft();
 	}
 
 	private void setupLang() {
 		ModLoader.addName(redstoneBlock, "Bloc de Redstone");
 		ModLoader.addName(brickWall, "Muret de briques");
 		ModLoader.addName(netherBrickWall, "Muret de briques des Tréfonds");
+		ModLoader.addName(cob, "Torchis");
+		ModLoader.addName(cob_timbered, "Torchis");
+		ModLoader.addName(cob_timbered2, "Torchis");
 		coloredGlass.registerNames();
 		carpet.registerNames();
 		sandStoneWall.registerNames();
@@ -178,6 +197,9 @@ public class mod_EthilVan extends BaseMod {
 
 		ModLoader.addRecipe(new ItemStack(Block.snow, 1), new Object[] {
 			"XXX", Character.valueOf('X'), Item.snowball
+		});
+		ModLoader.addRecipe(new ItemStack(cob, 3), new Object[] {
+			"CDC", "WCW", "CDC", Character.valueOf('C'), Item.clay, Character.valueOf('D'), new ItemStack(Item.dyePowder, 1, 15), Character.valueOf('W'), Item.wheat
 		});
 	}
 
