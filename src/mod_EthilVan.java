@@ -123,8 +123,8 @@ public class mod_EthilVan extends BaseMod {
 
 	private void setupCrafts() {
 		EVUtils.removeRecipe(new ItemStack(Block.sandStone));
-		ModLoader.addRecipe(new ItemStack(redstoneBlock, 1), new Object[] {
-			"XXX", "XXX", "XXX", Character.valueOf('X'), Item.redstone
+		ModLoader.addRecipe(new ItemStack(Block.blockRedstone, 1), new Object[] {
+			"X", Character.valueOf('X'), redstoneBlock
 		});
 		ModLoader.addRecipe(new ItemStack(Item.redstone, 9), new Object[] {
 			"X", Character.valueOf('X'), redstoneBlock
@@ -152,7 +152,7 @@ public class mod_EthilVan extends BaseMod {
 	}
 
 	private void setupLang() {
-		ModLoader.addName(redstoneBlock, "Bloc de Redstone");
+		ModLoader.addName(redstoneBlock, "EV Bloc de Redstone");
 		ModLoader.addName(brickWall, "Muret de briques");
 		ModLoader.addName(netherBrickWall, "Muret de briques des Tréfonds");
 		ModLoader.addName(cob, "Torchis");
