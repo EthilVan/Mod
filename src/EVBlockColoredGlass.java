@@ -58,7 +58,6 @@ public class EVBlockColoredGlass extends BlockBreakable {
 		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 2), "Vitre magenta");
 		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 3), "Vitre bleu clair");
 		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 4), "Vitre jaune");
-		System.out.println(mod_EthilVan.coloredGlass.getLocalizedName());
 		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 5), "Vitre vert clair");
 		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 6), "Vitre rose");
 		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 7), "Vitre grise");
