@@ -21,8 +21,8 @@ public class EVBlockWallSandstone extends BlockWall {
 	}
 
 	public void registerNames() {
-		ModLoader.addName(new ItemStack(mod_EthilVan.sandStoneWall, 1, 0), "Muret de grès");
-		ModLoader.addName(new ItemStack(mod_EthilVan.sandStoneWall, 1, 1), "Muret de grès lisse");
+		ModLoader.addLocalization("ev_sandStoneWall.default", "Muret de grès");
+		ModLoader.addLocalization("ev_sandStoneWall.smooth", "Muret de grès lisse");
 	}
 
 	public void registerCrafts() {

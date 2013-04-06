@@ -21,8 +21,8 @@ public class GuiIngameMenu extends GuiScreen
         if (!this.mc.isIntegratedServerRunning())
         {
             ((GuiButton)this.buttonList.get(0)).displayString = StatCollector.translateToLocal("menu.disconnect");
-            this.buttonList.add(new GuiButton(8, this.width / 2 - 100, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("EthilVan.fr")));
-            this.buttonList.add(new GuiButton(9, this.width / 2 + 2, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("Carte dynamique")));
+            this.buttonList.add(new GuiButton(8, this.width / 2 - 100, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("menu.web.ethilvanfr")));
+            this.buttonList.add(new GuiButton(9, this.width / 2 + 2, this.height / 4 + 56, 98, 20, StatCollector.translateToLocal("menu.web.map")));
         }
 
         this.buttonList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + var1, StatCollector.translateToLocal("menu.returnToGame")));

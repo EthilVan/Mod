@@ -169,9 +169,9 @@ public class GuiMainMenu extends GuiScreen
 		{
 			this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options")));
 			this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
-			this.buttonList.add(new GuiButton(7, width / 2 - 100, var4 - 10, 98, 20, var2.translateKey("EthilVan.fr")));
-			this.buttonList.add(new GuiButton(8, width / 2 + 2 , var4 - 10, 98, 20, var2.translateKey("Carte dynamique")));
-			this.buttonList.add(new GuiButton(6, width / 2 - 100, var4 + 14, var2.translateKey(EnumChatFormatting.DARK_GREEN + "Connexion à Ethil Van...")));
+			this.buttonList.add(new GuiButton(7, width / 2 - 100, var4 - 10, 98, 20, var2.translateKey("menu.web.ethilvanfr")));
+			this.buttonList.add(new GuiButton(8, width / 2 + 2 , var4 - 10, 98, 20, var2.translateKey("menu.web.map")));
+			this.buttonList.add(new GuiButton(6, width / 2 - 100, var4 + 14, EnumChatFormatting.GREEN + var2.translateKey("menu.connectToEthilvan")));
 		}
 
 		this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));

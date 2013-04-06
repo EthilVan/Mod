@@ -46,22 +46,22 @@ public final class EVUtils {
 	}
 
     public static void registerWoolStairsName() {
-    	ModLoader.addName(mod_EthilVan.stairsWoolWhite, "Escalier de laine blanc");
-        ModLoader.addName(mod_EthilVan.stairsWoolOrange, "Escalier de laine orange");
-        ModLoader.addName(mod_EthilVan.stairsWoolMagenta, "Escalier de laine magenta");
-        ModLoader.addName(mod_EthilVan.stairsWoolLightBlue, "Escalier de laine bleu clair");
-        ModLoader.addName(mod_EthilVan.stairsWoolYellow, "Escalier de laine jaune");
-        ModLoader.addName(mod_EthilVan.stairsWoolLime, "Escalier de laine vert clair");
-        ModLoader.addName(mod_EthilVan.stairsWoolPink, "Escalier de laine rose");
-        ModLoader.addName(mod_EthilVan.stairsWoolGray, "Escalier de laine gris");
-        ModLoader.addName(mod_EthilVan.stairsWoolLightGray, "Escalier de laine gris clair");
-        ModLoader.addName(mod_EthilVan.stairsWoolCyan, "Escalier de laine cyan");
-        ModLoader.addName(mod_EthilVan.stairsWoolPurple, "Escalier de laine violet");
-        ModLoader.addName(mod_EthilVan.stairsWoolBlue, "Escalier de laine bleu");
-        ModLoader.addName(mod_EthilVan.stairsWoolBrown, "Escalier de laine marron");
-        ModLoader.addName(mod_EthilVan.stairsWoolGreen, "Escalier de laine vert");
-        ModLoader.addName(mod_EthilVan.stairsWoolRed, "Escalier de laine rouge");
-        ModLoader.addName(mod_EthilVan.stairsWoolBlack, "Escalier de laine noir");
+		ModLoader.addLocalization("ev_stairsWoolWhite", "Escalier blanc");
+		ModLoader.addLocalization("ev_stairsWoolOrange", "Escalier orangé");
+		ModLoader.addLocalization("ev_stairsWoolMagenta", "Escalier magenta");
+		ModLoader.addLocalization("ev_stairsWoolLight_blue", "Escalier bleu clair");
+		ModLoader.addLocalization("ev_stairsWoolYellow", "Escalier jaune");
+		ModLoader.addLocalization("ev_stairsWoolLime", "Escalier vert clair");
+		ModLoader.addLocalization("ev_stairsWoolPink", "Escalier rose");
+		ModLoader.addLocalization("ev_stairsWoolGray", "Escalier gris");
+		ModLoader.addLocalization("ev_stairsWoolLight_gray", "Escalier gris clair");
+		ModLoader.addLocalization("ev_stairsWoolCyan", "Escalier cyan");
+		ModLoader.addLocalization("ev_stairsWoolPurple", "Escalier violet");
+		ModLoader.addLocalization("ev_stairsWoolBlue", "Escalier bleu");
+		ModLoader.addLocalization("ev_stairsWoolBrown", "Escalier marron");
+		ModLoader.addLocalization("ev_stairsWoolGreen", "Escalier vert");
+		ModLoader.addLocalization("ev_stairsWoolRed", "Escalier rouge");
+		ModLoader.addLocalization("ev_stairsWoolBlack", "Escalier noir");
     }
 
     public static void registerWoolStairsCraft() {

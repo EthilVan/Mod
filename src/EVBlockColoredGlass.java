@@ -7,7 +7,7 @@ import org.lwjgl.Sys;
 
 public class EVBlockColoredGlass extends BlockBreakable {
 
-    private Icon[] icon;
+	private Icon[] icon;
 
 	protected EVBlockColoredGlass(int par1, Material par3Material, boolean par4) {
 		super(par1, "", par3Material, par4);
@@ -29,12 +29,12 @@ public class EVBlockColoredGlass extends BlockBreakable {
 	}
 
 	public void registerIcons(IconRegister par1IconRegister)
-    {
-	    icon = new Icon[16];
-	    for (int i = 0; i < EVUtils.woolType.length; i++) {
-	    	this.icon[i] = par1IconRegister.registerIcon("ev_glass_" + EVUtils.woolType[i]);
-	    }
-    }
+	{
+		icon = new Icon[16];
+		for (int i = 0; i < EVUtils.woolType.length; i++) {
+			this.icon[i] = par1IconRegister.registerIcon("ev_glass_" + EVUtils.woolType[i]);
+		}
+	}
 
 	public Icon getBlockTextureFromSideAndMetadata(int side, int metadata) {
 		return icon[metadata];
@@ -53,22 +53,22 @@ public class EVBlockColoredGlass extends BlockBreakable {
 
 
 	public void registerNames() {
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 0), "Vitre blanche");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 1), "Vitre orangée");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 2), "Vitre magenta");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 3), "Vitre bleu clair");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 4), "Vitre jaune");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 5), "Vitre vert clair");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 6), "Vitre rose");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 7), "Vitre grise");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 8), "Vitre grise claire");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 9), "Vitre cyan");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 10), "Vitre violette");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 11), "Vitre bleue");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 12), "Vitre marron");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 13), "Vitre verte");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 14), "Vitre rouge");
-		ModLoader.addName(new ItemStack(mod_EthilVan.coloredGlass, 1, 15), "Vitre noire");
+		ModLoader.addLocalization("ev_coloredGlass.white", "Vitre blanche");
+		ModLoader.addLocalization("ev_coloredGlass.orange", "Vitre orangée");
+		ModLoader.addLocalization("ev_coloredGlass.magenta", "Vitre magenta");
+		ModLoader.addLocalization("ev_coloredGlass.light_blue", "Vitre bleu clair");
+		ModLoader.addLocalization("ev_coloredGlass.yellow", "Vitre jaune");
+		ModLoader.addLocalization("ev_coloredGlass.lime", "Vitre vert clair");
+		ModLoader.addLocalization("ev_coloredGlass.pink", "Vitre rose");
+		ModLoader.addLocalization("ev_coloredGlass.gray", "Vitre grise");
+		ModLoader.addLocalization("ev_coloredGlass.light_gray", "Vitre grise claire");
+		ModLoader.addLocalization("ev_coloredGlass.cyan", "Vitre cyan");
+		ModLoader.addLocalization("ev_coloredGlass.purple", "Vitre violette");
+		ModLoader.addLocalization("ev_coloredGlass.blue", "Vitre bleue");
+		ModLoader.addLocalization("ev_coloredGlass.brown", "Vitre marron");
+		ModLoader.addLocalization("ev_coloredGlass.green", "Vitre verte");
+		ModLoader.addLocalization("ev_coloredGlass.red", "Vitre rouge");
+		ModLoader.addLocalization("ev_coloredGlass.black", "Vitre noire");
 	}
 
 	@Override

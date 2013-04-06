@@ -69,22 +69,22 @@ public class EVBlockCarpet extends Block {
 	}
 
 	public void registerNames() {
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 0), "Tapis blanc");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 1), "Tapis orange");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 2), "Tapis magenta");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 3), "Tapis bleu clair");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 4), "Tapis jaune");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 5), "Tapis vert clair");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 6), "Tapis rose");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 7), "Tapis gris");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 8), "Tapis gris clair");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 9), "Tapis cyan");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 10), "Tapis violet");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 11), "Tapis bleu");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 12), "Tapis marron");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 13), "Tapis vert");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 14), "Tapis rouge");
-		ModLoader.addName(new ItemStack(mod_EthilVan.carpet, 1, 15), "Tapis noir");
+		ModLoader.addLocalization("ev_coloredGlass.white", "Tapis blanc");
+		ModLoader.addLocalization("ev_coloredGlass.orange", "Tapis orangé");
+		ModLoader.addLocalization("ev_coloredGlass.magenta", "Tapis magenta");
+		ModLoader.addLocalization("ev_coloredGlass.light_blue", "Tapis bleu clair");
+		ModLoader.addLocalization("ev_coloredGlass.yellow", "Tapis jaune");
+		ModLoader.addLocalization("ev_coloredGlass.lime", "Tapis vert clair");
+		ModLoader.addLocalization("ev_coloredGlass.pink", "Tapis rose");
+		ModLoader.addLocalization("ev_coloredGlass.gray", "Tapis gris");
+		ModLoader.addLocalization("ev_coloredGlass.light_gray", "Tapis gris clair");
+		ModLoader.addLocalization("ev_coloredGlass.cyan", "Tapis cyan");
+		ModLoader.addLocalization("ev_coloredGlass.purple", "Tapis violet");
+		ModLoader.addLocalization("ev_coloredGlass.blue", "Tapis bleu");
+		ModLoader.addLocalization("ev_coloredGlass.brown", "Tapis marron");
+		ModLoader.addLocalization("ev_coloredGlass.green", "Tapis vert");
+		ModLoader.addLocalization("ev_coloredGlass.red", "Tapis rouge");
+		ModLoader.addLocalization("ev_coloredGlass.black", "Tapis noir");
 	}
 
 	public void registerCrafts() {

@@ -28,10 +28,10 @@ public class EVBlockWallStonebrick extends BlockWall {
 	}
 
 	public void registerNames() {
-		ModLoader.addName(new ItemStack(mod_EthilVan.stoneBrickWall, 1, 0), "Muret de briques de pierre");
-		ModLoader.addName(new ItemStack(mod_EthilVan.stoneBrickWall, 1, 1), "Muret de briques de pierre moussues");
-		ModLoader.addName(new ItemStack(mod_EthilVan.stoneBrickWall, 1, 2), "Muret de briques de pierre craquelées");
-		ModLoader.addName(new ItemStack(mod_EthilVan.stoneBrickWall, 1, 3), "Muret de briques de pierre sculptées");
+		ModLoader.addLocalization("ev_stoneBrickWall.default", "Muret de briques de pierre");
+		ModLoader.addLocalization("ev_stoneBrickWall.mossy", "Muret de briques de pierre moussues");
+		ModLoader.addLocalization("ev_stoneBrickWall.cracked", "Muret de briques de pierre craquelées");
+		ModLoader.addLocalization("ev_stoneBrickWall.chiseled", "Muret de briques de pierre sculptées");
 	}
 
 	public void registerCrafts() {

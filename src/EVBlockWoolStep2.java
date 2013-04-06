@@ -57,14 +57,14 @@ public class EVBlockWoolStep2 extends BlockHalfSlab {
 	}
 
 	public static void registerNames() {
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 0), "Dalle de laine gris claire");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 1), "Dalle de laine cyan");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 2), "Dalle de laine violet");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 3), "Dalle de laine bleue");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 4), "Dalle de laine marron");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 5), "Dalle de laine verte");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 6), "Dalle de laine rouge");
-		ModLoader.addName(new ItemStack(mod_EthilVan.singleWoolStep2, 1, 7), "Dalle de laine noire");
+		ModLoader.addLocalization("ev_woolStep2.lightGray", "Dalle de laine grise claire");
+		ModLoader.addLocalization("ev_woolStep2.cyan", "Dalle de laine cyan");
+		ModLoader.addLocalization("ev_woolStep2.purple", "Dalle de laine violette");
+		ModLoader.addLocalization("ev_woolStep2.blue", "Dalle de laine bleue");
+		ModLoader.addLocalization("ev_woolStep2.brown", "Dalle de laine marron");
+		ModLoader.addLocalization("ev_woolStep2.green", "Dalle de laine verte");
+		ModLoader.addLocalization("ev_woolStep2.red", "Dalle de laine rouge");
+		ModLoader.addLocalization("ev_woolStep2.black", "Dalle de laine noire");
 	}
 
 	public static void registerCrafts() {
