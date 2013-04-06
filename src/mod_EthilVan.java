@@ -132,8 +132,9 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.addRecipe(new ItemStack(brickWall, 6), new Object[] {
 			"XXX", "XXX", Character.valueOf('X'), Block.brick
 		});
-		ModLoader.addShapelessRecipe(new ItemStack(netherBrickWall, 1), new Object[] {new ItemStack(Block.netherFence, 1)});
-		ModLoader.addShapelessRecipe(new ItemStack(Block.netherFence, 1), new Object[] {new ItemStack(netherBrickWall, 1)});
+		ModLoader.addRecipe(new ItemStack(netherBrickWall, 2), new Object[] {
+			"XXX", "XXX", Character.valueOf('X'), Item.field_94584_bZ
+		});
 		ModLoader.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
 			"XX", "XX", Character.valueOf('X'), Block.sand
 		});
