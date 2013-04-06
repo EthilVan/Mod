@@ -123,6 +123,7 @@ public class mod_EthilVan extends BaseMod {
 
 	private void setupCrafts() {
 		EVUtils.removeRecipe(new ItemStack(Block.sandStone));
+		EVUtils.removeRecipe(new ItemStack(Block.netherFence, 6));
 		ModLoader.addRecipe(new ItemStack(Block.blockRedstone, 1), new Object[] {
 			"X", Character.valueOf('X'), redstoneBlock
 		});
@@ -132,7 +133,10 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.addRecipe(new ItemStack(brickWall, 6), new Object[] {
 			"XXX", "XXX", Character.valueOf('X'), Block.brick
 		});
-		ModLoader.addRecipe(new ItemStack(netherBrickWall, 2), new Object[] {
+		ModLoader.addRecipe(new ItemStack(netherBrickWall, 6), new Object[] {
+			"XXX", "XXX", Character.valueOf('X'), Block.netherBrick
+		});
+		ModLoader.addRecipe(new ItemStack(Block.netherFence, 2), new Object[] {
 			"XXX", "XXX", Character.valueOf('X'), Item.field_94584_bZ
 		});
 		ModLoader.addRecipe(new ItemStack(Block.sandStone, 2), new Object[] {
