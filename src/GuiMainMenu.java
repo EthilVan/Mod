@@ -171,7 +171,7 @@ public class GuiMainMenu extends GuiScreen
 			this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
 			this.buttonList.add(new GuiButton(7, width / 2 - 100, var4 - 10, 98, 20, var2.translateKey("menu.web.ethilvanfr")));
 			this.buttonList.add(new GuiButton(8, width / 2 + 2 , var4 - 10, 98, 20, var2.translateKey("menu.web.map")));
-			this.buttonList.add(new GuiButton(6, width / 2 - 100, var4 + 14, EnumChatFormatting.GREEN + var2.translateKey("menu.connectToEthilvan")));
+			this.buttonList.add(new GuiButton(6, width / 2 - 100, var4 + 14, EnumChatFormatting.YELLOW + var2.translateKey("menu.connectToEthilvan")));
 		}
 
 		this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));
@@ -534,7 +534,7 @@ public class GuiMainMenu extends GuiScreen
 		GL11.glScalef(var8, var8, var8);
 		this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
 		GL11.glPopMatrix();
-		String var9 = EnumChatFormatting.DARK_GREEN + "Minecraft 1.5.1 pour Ethil Van";
+		String var9 = "Minecraft 1.5.1 pour Ethil Van";
 
 		if (this.mc.isDemo())
 		{
