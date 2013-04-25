@@ -1,4 +1,3 @@
-
 menu.web.ethilvanfr=EthilVan.fr
 menu.web.map=Carte dynamique
 menu.connectToEthilvan=Connexion à Ethil Van...
@@ -77,3 +76,4 @@ tile.ev_woolStep2.brown.name=Dalle de laine marron
 tile.ev_woolStep2.green.name=Dalle de laine verte
 tile.ev_woolStep2.red.name=Dalle de laine rouge
 tile.ev_woolStep2.black.name=Dalle de laine noire
+item.ev_sign.name=Panneau
