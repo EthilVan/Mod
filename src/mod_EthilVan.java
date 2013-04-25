@@ -32,9 +32,13 @@ public class mod_EthilVan extends BaseMod {
 	public static Block cob;
 	public static EVBlockCobTimbered cob_timbered;
 	public static EVBlockCobTimbered2 cob_timbered2;
+	public static EVBlockSign signPost;
+	public static EVBlockSign wallSign;
+	public static EVItemSign itemSign;
 
 	@Override
 	public void load() {
+		setupItems();
 		setupBlocks();
 		setupTexture();
 		setupLang();
@@ -84,6 +88,12 @@ public class mod_EthilVan extends BaseMod {
 		cob_timbered2 = (EVBlockCobTimbered2) new EVBlockCobTimbered2(225, Material.rock).getIndirectPowerOutput("ev_cob");
 		ModLoader.registerBlock(cob_timbered2);
 		Item.itemsList[cob_timbered2.blockID] = new ItemMultiTextureTile(cob_timbered2.blockID - 256, cob_timbered2, EVBlockCobTimbered2.faces).setUnlocalizedName("cobTimbered");
+		signPost = (EVBlockSign) new EVBlockSign(222, TileEntitySign.class, true)
+			.setHardness(1.0F).setStepSound(Block.soundWoodFootstep).getIndirectPowerOutput("evsign").disableStats();
+		wallSign = (EVBlockSign) new EVBlockSign(221, TileEntitySign.class, false)
+			.setHardness(1.0F).setStepSound(Block.soundWoodFootstep).getIndirectPowerOutput("evsign").disableStats();
+		ModLoader.registerBlock(signPost);
+		ModLoader.registerBlock(wallSign);
 	}
 
 	private void setupWoolStairs() {
@@ -124,6 +134,7 @@ public class mod_EthilVan extends BaseMod {
 	private void setupCrafts() {
 		EVUtils.removeRecipe(new ItemStack(Block.sandStone));
 		EVUtils.removeRecipe(new ItemStack(Block.netherFence, 6));
+		EVUtils.removeRecipe(new ItemStack(Item.sign, 3));
 		ModLoader.addRecipe(new ItemStack(Block.blockRedstone, 1), new Object[] {
 			"X", Character.valueOf('X'), redstoneBlock
 		});
@@ -161,6 +172,7 @@ public class mod_EthilVan extends BaseMod {
 		ModLoader.addLocalization("ev_brickWall", "Muret de briques");
 		ModLoader.addLocalization("ev_netherbrickWall", "Muret de briques des Tréfonds");
 		ModLoader.addLocalization("ev_cob.0", "Torchis");
+		ModLoader.addLocalization("ev_sign", "Panneau");
 		coloredGlass.registerNames();
 		carpet.registerNames();
 		sandStoneWall.registerNames();
@@ -171,6 +183,11 @@ public class mod_EthilVan extends BaseMod {
 	}
 
 	private void setupTexture() {
+	}
+
+	private void setupItems() {
+		itemSign = (EVItemSign) new EVItemSign(200).setUnlocalizedName("ev_sign");
+		itemSign.registerCrafts();
 	}
 
 	private void registerCraft() {
