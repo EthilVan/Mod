@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import org.lwjgl.opengl.GL11;
 
-public class EVTileEntitySignRenderer extends TileEntitySpecialRenderer
+public class TileEntitySignRenderer extends TileEntitySpecialRenderer
 {
     /** The ModelSign instance used by the TileEntitySignRenderer */
     private ModelSign modelSign = new ModelSign();
@@ -14,7 +14,7 @@ public class EVTileEntitySignRenderer extends TileEntitySpecialRenderer
         float var10 = 0.6666667F;
         float var12;
 
-        if (var9 == mod_EthilVan.signPost)
+        if (var9 == Block.signPost || var9 == mod_EthilVan.signPost)
         {
             GL11.glTranslatef((float)par2 + 0.5F, (float)par4 + 0.75F * var10, (float)par6 + 0.5F);
             float var11 = (float)(par1TileEntitySign.getBlockMetadata() * 360) / 16.0F;
@@ -47,7 +47,11 @@ public class EVTileEntitySignRenderer extends TileEntitySpecialRenderer
             this.modelSign.signStick.showModel = false;
         }
 
-        this.bindTextureByName("/item/ev_sign.png");
+        if (var9 == Block.signPost || var9 == Block.signWall) {
+            this.bindTextureByName("/item/sign.png");
+        } else {
+            this.bindTextureByName("/item/ev_sign.png");
+        }
         GL11.glPushMatrix();
         GL11.glScalef(var10, -var10, -var10);
         this.modelSign.renderSign();
