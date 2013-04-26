@@ -225,6 +225,6 @@ public class mod_EthilVan extends BaseMod {
 
 	@Override
 	public String getVersion() {
-		return "0.0.1";
+		return "1.0.0-DEV";
 	}
 }
