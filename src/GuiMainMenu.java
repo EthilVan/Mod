@@ -25,6 +25,7 @@ public class GuiMainMenu extends GuiScreen
 	/** The splash message. */
 	private String splashText = "missingno";
 	private GuiButton buttonResetDemo;
+	private EVServerUtils server;
 
 	/** Timer used to rotate the panorama, increases every tick. */
 	private int panoramaTimer = 0;
@@ -50,49 +51,8 @@ public class GuiMainMenu extends GuiScreen
 
 	public GuiMainMenu()
 	{
-		BufferedReader var1 = null;
-
-		try
-		{
-			ArrayList var2 = new ArrayList();
-			var1 = new BufferedReader(new InputStreamReader(GuiMainMenu.class.getResourceAsStream("/title/splashes.txt"), Charset.forName("UTF-8")));
-			String var3;
-
-			while ((var3 = var1.readLine()) != null)
-			{
-				var3 = var3.trim();
-
-				if (var3.length() > 0)
-				{
-					var2.add(var3);
-				}
-			}
-
-			do
-			{
-				this.splashText = (String)var2.get(rand.nextInt(var2.size()));
-			}
-			while (this.splashText.hashCode() == 125780783);
-		}
-		catch (IOException var12)
-		{
-			;
-		}
-		finally
-		{
-			if (var1 != null)
-			{
-				try
-				{
-					var1.close();
-				}
-				catch (IOException var11)
-				{
-					;
-				}
-			}
-		}
-
+		server = new EVServerUtils(new ServerData("EthilVan", "play.ethilvan.fr"));
+		splashText = server.getMOTD();
 		this.updateCounter = rand.nextFloat();
 	}
 
@@ -171,7 +131,14 @@ public class GuiMainMenu extends GuiScreen
 			this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
 			this.buttonList.add(new GuiButton(7, width / 2 - 100, var4 - 10, 98, 20, var2.translateKey("menu.web.ethilvanfr")));
 			this.buttonList.add(new GuiButton(8, width / 2 + 2 , var4 - 10, 98, 20, var2.translateKey("menu.web.map")));
-			this.buttonList.add(new GuiButton(6, width / 2 - 100, var4 + 14, EnumChatFormatting.YELLOW + var2.translateKey("menu.connectToEthilvan")));
+			GuiButton connect = new GuiButton(6, width / 2 - 100, var4 + 14, "");
+			if (!server.getMinecraftVersion().equals("1.5.1")) {
+				connect.displayString = EnumChatFormatting.DARK_RED + String.format(var2.translateKey("menu.badversion"), server.getMinecraftVersion());
+				connect.enabled = false;
+			} else {
+				connect.displayString = EnumChatFormatting.YELLOW + String.format(var2.translateKey("menu.connectToEthilvan"), server.getPopulationInfo());
+			}
+			this.buttonList.add(connect);
 		}
 
 		this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));
@@ -248,6 +215,7 @@ public class GuiMainMenu extends GuiScreen
 	 */
 	protected void actionPerformed(GuiButton par1GuiButton)
 	{
+		updateServerData();
 		if (par1GuiButton.id == 0)
 		{
 			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
@@ -309,6 +277,11 @@ public class GuiMainMenu extends GuiScreen
 				this.mc.displayGuiScreen(var4);
 			}
 		}
+	}
+
+	public void updateServerData() {
+		server.update();
+		splashText = server.getMOTD();
 	}
 
 	public void confirmClicked(boolean par1, int par2)

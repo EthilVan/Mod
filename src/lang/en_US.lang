@@ -1,6 +1,7 @@
 menu.web.ethilvanfr=EthilVan.fr
 menu.web.map=Carte dynamique
-menu.connectToEthilvan=Connexion à Ethil Van...
+menu.connectToEthilvan=Connexion à Ethil Van... (%s)
+menu.badversion=Mauvaise version. Attendue : %s
 
 tile.ev_redstoneBlock.name=EV Bloc de Redstone
 tile.ev_sandStoneWall.default.name=Muret de grès
