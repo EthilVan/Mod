@@ -1,7 +1,5 @@
 package net.minecraft.src;
 
-import javax.rmi.CORBA.Tie;
-
 public class mod_EthilVan extends BaseMod {
 
 	public static Block redstoneBlock;

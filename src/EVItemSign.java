@@ -75,7 +75,7 @@ public class EVItemSign extends Item
 
                 if (var12 != null)
                 {
-                    ModLoader.openGUI(par2EntityPlayer, new GuiEditSign(var12));
+                    par2EntityPlayer.displayGUIEditSign(var12);
                 }
 
                 return true;
