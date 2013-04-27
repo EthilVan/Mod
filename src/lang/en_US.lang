@@ -1,7 +1,9 @@
 menu.web.ethilvanfr=EthilVan.fr
 menu.web.map=Carte dynamique
-menu.connectToEthilvan=Connexion à Ethil Van... (%s)
-menu.badversion=Mauvaise version. Attendue : %s
+menu.connectToEthilvan=(%s) Connexion à Ethil Van...
+menu.badversion=Mauvaise version. Attendue : %s.
+menu.serverOff=Le serveur est éteint.
+server.ip=play.ethilvan.fr
 
 tile.ev_redstoneBlock.name=EV Bloc de Redstone
 tile.ev_sandStoneWall.default.name=Muret de grès
