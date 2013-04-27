@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
 import net.minecraft.client.Minecraft;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
@@ -26,6 +28,7 @@ public class GuiMainMenu extends GuiScreen
 	private String splashText = "missingno";
 	private GuiButton buttonResetDemo;
 	private EVServerUtils server;
+	private String serverIP = StringTranslate.getInstance().translateKey("server.ip");
 
 	/** Timer used to rotate the panorama, increases every tick. */
 	private int panoramaTimer = 0;
@@ -51,8 +54,13 @@ public class GuiMainMenu extends GuiScreen
 
 	public GuiMainMenu()
 	{
-		server = new EVServerUtils(new ServerData("EthilVan", "play.ethilvan.fr"));
-		splashText = server.getMOTD();
+		ServerAddress adress = ServerAddress.func_78860_a(serverIP);
+		server = new EVServerUtils(new ServerData("EthilVan", adress.getIP()));
+		if (server.getMOTD().equals("???")) {
+			splashText = EVUtils.getSplashText();
+		} else {
+			splashText = server.getMOTD();
+		}
 		this.updateCounter = rand.nextFloat();
 	}
 
@@ -132,7 +140,10 @@ public class GuiMainMenu extends GuiScreen
 			this.buttonList.add(new GuiButton(7, width / 2 - 100, var4 - 10, 98, 20, var2.translateKey("menu.web.ethilvanfr")));
 			this.buttonList.add(new GuiButton(8, width / 2 + 2 , var4 - 10, 98, 20, var2.translateKey("menu.web.map")));
 			GuiButton connect = new GuiButton(6, width / 2 - 100, var4 + 14, "");
-			if (!server.getMinecraftVersion().equals("1.5.1")) {
+			if (server.getIp().equals("???")) {
+				connect.displayString = EnumChatFormatting.DARK_RED + var2.translateKey("menu.serverOff");
+				connect.enabled = false;
+			} else if (!server.getMinecraftVersion().equals("1.5.1")) {
 				connect.displayString = EnumChatFormatting.DARK_RED + String.format(var2.translateKey("menu.badversion"), server.getMinecraftVersion());
 				connect.enabled = false;
 			} else {
@@ -216,6 +227,7 @@ public class GuiMainMenu extends GuiScreen
 	protected void actionPerformed(GuiButton par1GuiButton)
 	{
 		updateServerData();
+
 		if (par1GuiButton.id == 0)
 		{
 			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
@@ -248,7 +260,8 @@ public class GuiMainMenu extends GuiScreen
 
 		if (par1GuiButton.id == 6)
 		{
-			mc.displayGuiScreen(new GuiConnecting(this, mc, "play.ethilvan.fr", 25565));
+			ServerAddress adress = ServerAddress.func_78860_a(serverIP);
+			mc.displayGuiScreen(new GuiConnecting(this, mc, adress.getIP(), adress.getPort()));
 		}
 
 		if (par1GuiButton.id == 7)
@@ -279,9 +292,14 @@ public class GuiMainMenu extends GuiScreen
 		}
 	}
 
-	public void updateServerData() {
-		server.update();
-		splashText = server.getMOTD();
+	public void updateServerData(){
+		ServerAddress adress = ServerAddress.func_78860_a(serverIP);
+		server.update(new ServerData("EthilVan", adress.getIP()));
+		if (server.getMOTD().equals("???")) {
+			splashText = EVUtils.getSplashText();
+		} else {
+			splashText = server.getMOTD();
+		}
 	}
 
 	public void confirmClicked(boolean par1, int par2)

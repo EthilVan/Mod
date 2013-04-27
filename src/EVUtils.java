@@ -2,7 +2,12 @@ package net.minecraft.src;
 
 import java.awt.Desktop;
 import java.awt.Menu;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -95,5 +100,51 @@ public final class EVUtils {
 
 	public static boolean isWool(int id) {
 		return isWoolStairs(id) || isWoolStep(id);
+	}
+
+	public static String getSplashText() {
+		BufferedReader var1 = null;
+
+        try
+        {
+            ArrayList var2 = new ArrayList();
+            var1 = new BufferedReader(new InputStreamReader(GuiMainMenu.class.getResourceAsStream("/title/splashes.txt"), Charset.forName("UTF-8")));
+            String var3;
+
+            while ((var3 = var1.readLine()) != null)
+            {
+                var3 = var3.trim();
+
+                if (var3.length() > 0)
+                {
+                    var2.add(var3);
+                }
+            }
+
+            do
+            {
+                return (String)var2.get(new Random().nextInt(var2.size()));
+            }
+            while (var2.get(new Random().nextInt(var2.size())).hashCode() == 125780783);
+        }
+        catch (IOException var12)
+        {
+            ;
+        }
+        finally
+        {
+            if (var1 != null)
+            {
+                try
+                {
+                    var1.close();
+                }
+                catch (IOException var11)
+                {
+                    ;
+                }
+            }
+        }
+		return null;
 	}
 }
